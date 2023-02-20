@@ -1,0 +1,910 @@
+<ng-container *ngIf="myaccount" >
+	<ng-container *ngIf="myaccount.role === 'Admin'" >
+		<div class="row admin-cards">
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-accounts">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Accounts
+						</h3>
+					</div>
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Total Accounts: <span *ngIf="!primaryData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="primaryData">{{primaryData.length}}</span>
+						</h3>
+					</div>
+
+
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'accounts']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-countries">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Clients
+						</h3>
+
+						<h3 class="card-user-title">
+							Total Clients: <span *ngIf="!clientData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="clientData">{{clientData.length}}</span>
+						</h3>
+
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'clients']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-offices">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Brief Phases
+						</h3>
+						<h3 class="card-user-title">
+							Total Brief Phases: <span *ngIf="!briefPhaseData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="briefPhaseData">{{briefPhaseData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'briefphases']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-shirt-sizes">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Brief
+						</h3>
+						<h3 class="card-user-title">
+							Total Brief: <span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</h3>
+
+						<mat-progress-bar [color]="color" mode="determinate" [value]="value"></mat-progress-bar>
+					</div>
+
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'briefs']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-shoe-sizes">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Creative Executions
+						</h3>
+						<h3 class="card-user-title">
+							Total Creative Executions:
+							<span *ngIf="!clientData" class="mr-1 spinner-border spinner-border-sm"></span>
+							<span *ngIf="primaryData">{{clientData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'creativeexecutions']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-diet-options">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Creative
+						</h3>
+						<h3 class="card-user-title">
+							Total Creatives:
+							<span *ngIf="!creativeData" class="mr-1 spinner-border spinner-border-sm"></span>
+							<span *ngIf="creativeData">{{creativeData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'creatives']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-offices">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Job Levels
+						</h3>
+						<h3 class="card-user-title">
+							Job Levels: <span *ngIf="!jobLevelData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="jobLevelData">{{jobLevelData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'jobleves']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-shirt-sizes">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Job Titles
+						</h3>
+						<h3 class="card-user-title">
+							Total Job Titles: <span *ngIf="!jobTitleData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="jobTitleData">{{jobTitleData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'jobtitles']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-shoe-sizes">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Teams
+						</h3>
+						<h3 class="card-user-title">
+							Total Teams: <span *ngIf="!teamData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="teamData">{{teamData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'teams']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-diet-options">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Brand KPIs
+						</h3>
+						<h3 class="card-user-title">
+							Total BrandKPIs: <span *ngIf="!clientData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="primaryData">{{clientData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'brandKPIs']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+			<div class="col-12 col-md-4">
+
+				<div class="admin-card card-diet-options">
+
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						[matMenuTriggerFor]="menu" aria-label="">
+							<mat-icon>more_vert</mat-icon>
+					</button>
+
+					<div class="card-user-header">
+						<h3 class="card-user-title">
+							Brands
+						</h3>
+						<h3 class="card-user-title">
+							Total Brands: <span *ngIf="!brandData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="brandData">{{brandData.length}}</span>
+						</h3>
+						<mat-chip-list
+							class="example-chip">
+								<mat-chip
+									class="example-box">
+									<span class="card-user-subtitle">Lookup Field</span>
+								</mat-chip>
+						</mat-chip-list>
+					</div>
+
+					<div class="card-user-body">
+						<div class="card-user-body-content">
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+							</p>
+							<div class="card-user-body-content-item">
+								<button
+									mat-menu-item
+									[routerLink]="['/admin', 'brands']">
+										<span>Manage</span>
+								</button>
+							</div>
+						</div>
+					</div>
+
+					<mat-menu #menu="matMenu">
+						<button
+							mat-menu-item>
+								<mat-icon>widgets</mat-icon>
+								<span>Options</span>
+						</button>
+					</mat-menu>
+
+				</div>
+
+			</div>
+
+
+		</div>
+		<div class="dashboard-content">
+			<ng-container *ngIf="account">
+
+				<br>
+			<ul>
+				<li *ngIf="account.role === 'Client'">
+					<ul>
+						<li>if role is :  {{account.role}}</li>
+						<li>Number of brief :  </li>
+						<li>brief status :  </li>
+						<li>not permit further briefs to be submitted if they've reached their cap:  </li>
+					</ul>
+
+
+				</li>
+				<li *ngIf="account.role === 'Admin'">
+					<ul>
+						<li>if role is :  {{account.role}}</li>
+					</ul>
+				</li>
+				<li *ngIf="account.role === 'Admin'">
+
+				</li>
+
+			</ul>
+
+			</ng-container>
+
+		</div>
+
+	</ng-container>
+	<ng-container *ngIf="myaccount.role === 'Client'" >
+		<div class="row admin-cards">
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">Total Brief</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">Brief Created</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">Brief Inprogress</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">Brief Approved</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">Brief Resolved</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-2">
+				<div class="card-default-header card-accounts">
+					<div class="card-user-header">
+						<div class="card-user-title">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">brief Resolved</span>
+						</div>
+						<div class="card-user-subtitle">
+							<span *ngIf="!briefData" class="mr-1 spinner-border spinner-border-sm">
+							</span>
+							<span *ngIf="briefData">{{briefData.length}} / 50</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row admin-cards-body">
+			<div class="col-12 col-md-8">
+				<div class="card-default-body card-accounts">
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						>
+							<mat-icon>more_vert</mat-icon>
+					</button>
+					<div class="card-user-header">
+
+						number of brief created and what remains
+					</div>
+				</div>
+			</div>
+			<div class="col-12 col-md-4">
+				<div class="card-default-body card-accounts">
+					<button
+						class="admin-menu-trigger"
+						mat-icon-button
+						>
+							<mat-icon>more_vert</mat-icon>
+					</button>
+					<div class="card-user-header">
+						<app-card-profile></app-card-profile>
+					</div>
+				</div>
+			</div>
+		</div>
+	</ng-container>
+
+	<ng-container *ngIf="myaccount.role === 'ProjectManager'" >
+		ProjectManager
+	</ng-container>
+
+	<ng-container *ngIf="myaccount.role === 'AccountService'" >
+		AccountService
+	</ng-container>
+	<ng-container *ngIf="myaccount.role === 'Student'" >
+		<span *ngIf="account">
+			<div class="row admin-cards">
+				<div class="col-12 col-md-4">
+
+					<div class="admin-card">
+						<div class="card-user-header">
+							<h3 class="card-user-title">
+								{{account.role}}
+							</h3>
+						</div>
+						<div class="card-user-body">
+							<div class="card-user-body-content">
+								<ul>
+									<li>{{account.role}} Number : 21334455333</li>
+									<li>Title : {{account.title}}</li>
+									<li>Name : {{account.firstName}}</li>
+									<li>Surname : {{account.lastName}}</li>
+									<li>Email : {{account.email}}</li>
+									<li>ID No : {{account.IDNo}}</li>
+									<li>{{account.role}} Number : 21334455333</li>
+								
+								</ul>
+							</div>
+						</div>
+						<mat-accordion>
+							<mat-expansion-panel hideToggle>
+							  <mat-expansion-panel-header>
+								<mat-panel-title>
+								  This is the expansion title
+								</mat-panel-title>
+								<mat-panel-description>
+								  This is a summary of the content
+								</mat-panel-description>
+							  </mat-expansion-panel-header>
+							  <p>This is the primary content of the panel.</p>
+							</mat-expansion-panel>
+							<mat-expansion-panel (opened)="panelOpenState = true"
+												 (closed)="panelOpenState = false">
+							  <mat-expansion-panel-header>
+								<mat-panel-title>
+								  Self aware panel
+								</mat-panel-title>
+								<mat-panel-description>
+								  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+								</mat-panel-description>
+							  </mat-expansion-panel-header>
+							  <p>I'm visible because I am open</p>
+							</mat-expansion-panel>
+						  </mat-accordion>
+						
+						
+					
+
+						<mat-menu #menu="matMenu">
+							<button
+								mat-menu-item>
+									<mat-icon>widgets</mat-icon>
+									<span>Options</span>
+							</button>
+						</mat-menu>
+
+					</div>
+
+				</div>
+
+				<div class="col-12 col-md-8">
+
+					<div class="admin-card ">
+
+						<button
+							class="admin-menu-trigger"
+							mat-icon-button
+							[matMenuTriggerFor]="menu" aria-label="">
+								<mat-icon>more_vert</mat-icon>
+						</button>
+						<mat-accordion>
+							<mat-expansion-panel hideToggle>
+							  <mat-expansion-panel-header>
+								<mat-panel-title>
+								  This is the expansion title
+								</mat-panel-title>
+								<mat-panel-description>
+								  This is a summary of the content
+								</mat-panel-description>
+							  </mat-expansion-panel-header>
+							  <p>This is the primary content of the panel.</p>
+							</mat-expansion-panel>
+							<mat-expansion-panel (opened)="panelOpenState = true"
+												 (closed)="panelOpenState = false">
+							  <mat-expansion-panel-header>
+								<mat-panel-title>
+								  Self aware panel
+								</mat-panel-title>
+								<mat-panel-description>
+								  Currently I am {{panelOpenState ? 'open' : 'closed'}}
+								</mat-panel-description>
+							  </mat-expansion-panel-header>
+							  <p>I'm visible because I am open</p>
+							</mat-expansion-panel>
+						  </mat-accordion>
+						<div class="card-user-header">
+							<h3 class="card-user-title">
+								Clients
+							</h3>
+
+							<h3 class="card-user-title">
+								Total Clients: <span *ngIf="!clientData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="clientData">{{clientData.length}}</span>
+							</h3>
+
+							<mat-chip-list
+								class="example-chip">
+									<mat-chip
+										class="example-box">
+										<span class="card-user-subtitle">Lookup Field</span>
+									</mat-chip>
+							</mat-chip-list>
+						</div>
+
+						<div class="card-user-body">
+							<div class="card-user-body-content">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+								</p>
+								<div class="card-user-body-content-item">
+									<button
+										mat-menu-item
+										[routerLink]="['/admin', 'clients']">
+											<span>Manage</span>
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<mat-menu #menu="matMenu">
+							<button
+								mat-menu-item>
+									<mat-icon>widgets</mat-icon>
+									<span>Options</span>
+							</button>
+						</mat-menu>
+
+					</div>
+
+				</div>
+			</div>
+		</span>
+	</ng-container>
+</ng-container>

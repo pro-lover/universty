@@ -1,0 +1,21 @@
+<mat-nav-list *ngIf="isLoggedIn$ | async;">
+  <div class="logo">
+    <img src="../../../../assets/images/tbwa_logo_black.png" alt="Company Logo" />
+  </div>
+  <mat-divider></mat-divider>
+<div *ngIf="account" >
+  <a mat-list-item appClickTracking routerLink="/" appClickTracking ><mat-icon>home</mat-icon> Home</a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/accounts" routerLinkActive="active"><mat-icon>account_box</mat-icon> Accounts</a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/clients" routerLinkActive="active"><mat-icon>account_balance_wallet</mat-icon> Clients</a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/briefphases" routerLinkActive="active"> <mat-icon>rounded_corner</mat-icon> Brief Phases </a>
+  <a mat-list-item appClickTracking routerLink="/admin/briefs" routerLinkActive="active"> <mat-icon>receipt</mat-icon> Briefs </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/creativeexecutions" routerLinkActive="active"> <mat-icon>business</mat-icon> Creative Executions </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/creatives" routerLinkActive="active"> <mat-icon>gamepad</mat-icon> Creatives </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/joblevels" routerLinkActive="active"> <mat-icon>timeline</mat-icon> Job Levels </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/jobtitles" routerLinkActive="active"> <mat-icon>work</mat-icon> Job Titles </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/teams" routerLinkActive="active"> <mat-icon>supervisor_account</mat-icon> Teams </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/brandKPIs" routerLinkActive="active"> <mat-icon>subtitles</mat-icon> Brand KPIs </a>
+  <a *ngIf="account.role === 'Admin'" mat-list-item appClickTracking routerLink="/admin/brands" routerLinkActive="active"> <mat-icon>card_membership</mat-icon> Brands </a>
+</div>
+
+</mat-nav-list>

@@ -1,0 +1,660 @@
+
+@import '../../../../theme/app.global.scss';
+
+@keyframes stretchIn {
+	0% {
+		width: 0;
+		max-height:10px;
+	}
+	75% {
+		width:100%;
+		max-height:10px;
+	}
+	100% {
+		width:100%;
+		max-height:0;
+	}
+}
+
+@keyframes slideIn {
+	0% {
+		transform: scale(200) skew(20deg);
+	}
+	100% {
+		transform: scale(1) skew(20deg);
+	}
+}
+.mat-mdc-form-field + .mat-mdc-form-field {
+	margin-left: 8px;
+  }
+.welcome-hero-content {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0 auto;
+	width: 100%;
+	padding: 0 20px;
+
+	&::after,
+	&::before {
+		display: none;
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: -1;
+	}
+
+	.el {
+		opacity: 1;
+	}
+
+	.home-banner-copy {
+		font-weight: bold;
+		.year {
+			color: $colour_yellow;
+		}
+	}
+
+	.section-subtitle {
+		margin-top: 25px;
+		margin-bottom: 20px;
+		font-size: 1.5em;
+		//line-height: 1.1em;
+	}
+
+	.section-description {
+		position: relative;
+		font-size: 14px;
+		max-width: 50%;
+		padding:0;
+		margin: 0 auto;
+		display:block;
+		width:100%;
+	}
+
+	.button-white {
+		text-transform: uppercase;
+		font-size: 14px;
+		line-height: 1;
+		padding: 1em 2em;
+		margin: .5em auto;
+		display: inline-block;
+		background: transparent;
+
+		@include transition(all, .2s, ease-out);
+
+		&:hover {
+
+			color: #000;
+
+			&::before {
+				border-color: $colour_yellow;
+				background-color: $colour_yellow;
+			}
+		}
+	}
+}
+
+#disruptor,
+#MobileSlash {
+	display: none;
+}
+
+/** /
+#disruptor{
+	opacity: 1;
+	transform: translateY(-100px);
+	transition: all 0.5s ease-out;
+}
+
+#DISRUPT #DSRUPT,
+#DISRUPT #SLASH {
+  opacity: 1;
+
+  -webkit-transition: all 0.5s ease-out;
+  -moz-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
+  transition: all 0.5s ease-out;
+}
+
+.page-welcome .welcome-hero-content #DISRUPT #DSRUPT{
+	transform: translateX(50px);
+}
+
+#swae .ghost-btn{
+
+	transition: all 0.5s ease-out;
+}
+
+
+
+.tbwa-logo-dark,
+.tbwa-logo-light {
+	position: relative;
+	display: block;
+	width:100%;
+	max-width: 50vw;
+	margin: 0 auto;
+	margin-left: 0;
+}
+
+.tbwa-logo-dark #DISRUPT #DSRUPT,
+.tbwa-logo-dark #DISRUPT #SLASH {
+	fill:#000;
+
+}
+
+.tbwa-logo-light #DISRUPT #DSRUPT{
+	fill:#fff;
+
+}
+
+
+.tbwa-logo-dark #DISRUPT #SLASH {
+	fill: #FFC60A;
+	opacity: 1;
+	transform: translateX(-240px)
+}
+.tbwa-logo-light #DISRUPT #SLASH {
+	fill:#000;
+	opacity: 1;
+	transform: translateX(-240px)
+}
+
+.tbwa-logo-dark #disruptor .st2{
+	fill:#000;
+}
+.tbwa-logo-light #disruptor .st2{
+	fill:#fff;
+}
+
+.tbwa-logo-light #disruptor .st3{
+	fill:#000;
+}
+
+#MobileSlash {
+	display: none;
+	left: 0;
+	top: 0;
+	-webkit-transition: all 0.5s ease-out;
+	-moz-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+
+
+#disruptor {
+	display: none;
+}
+/**/
+
+/** /
+#swae {
+	display: block;
+	z-index: 2;
+	position: relative;
+}
+
+#swae {
+	position: absolute;
+	top:50%;
+	left:50%;
+	display:block;
+	transform: translateY(-90%) translateX(-50%);
+	z-index: 1;
+}
+/**/
+.admin-cards-body {
+	margin: 0;
+	display: flex;
+	padding: 0 2em;
+	align-items: flex-start;
+	margin-bottom: 4em;
+
+	@include transition(all, .2s, ease-out);
+
+	.card-default-body {
+		border: 1px solid #fbd4bc;
+		position: relative;
+		background-color: #FFFFFF;
+		border-radius: 10px;
+		width: 100%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 700px;
+		align-items: stretch;
+		justify-content: space-around;
+		box-shadow: $card_box_shadow;
+		overflow: hidden;
+
+		background-size: contain;
+		background-position: right bottom;
+		background-repeat: no-repeat;
+
+		@include transition(all, .2s, ease-out);
+
+		.example-chip {
+			display: flex;
+			justify-content: center;
+			margin: 1em auto;
+			margin-bottom: 0;
+		}
+
+		.card-user-header {
+			position: relative;
+			text-align: center;
+
+			.card-user-title {
+				font-size: 1em;
+				font-weight: bold;
+				text-transform: uppercase;
+				margin: 1em auto;
+				margin-bottom: .5em;
+			}
+
+			.card-user-subtitle {
+				font-size: .8em;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+
+		.admin-menu-trigger {
+			position: absolute;
+			top:0;
+			right:0;
+		}
+
+		.card-user-avatar {
+			position: relative;
+			display: block;
+			display: none;
+			text-align: center;
+			margin-bottom: 2em;
+
+			img {
+				width: 100%;
+				max-width: 100px;
+				border-radius: 100%;
+				margin: 0 auto;
+				box-shadow: 0 0 0 5px #cbcbcb;
+			}
+
+		}
+
+		.card-user-body {
+			position: relative;
+
+			.card-user-body-content {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				margin: 1em auto;
+
+				.card-user-subtitle {
+					font-size: .8em;
+					text-align: center;
+				}
+
+				p {
+					display: block;
+					display: none;
+					text-align: center;
+					margin-bottom: 2em;
+				}
+
+				.card-user-body-content-item {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					text-align: center;
+
+					button {
+						text-align: center;
+						font-weight: bold;
+						border-radius: $border_radius_button;
+						border: 1px solid #cbcbcb;
+						background-color: $colour_white;
+
+						@include transition(all, .2s, ease-out);
+
+						&:hover {
+							color: $colour_white;
+							border: 1px solid $colour_green;
+							background-color: $colour_green;
+						}
+					}
+				}
+			}
+
+		}
+
+		.mat-grid-tile-content {
+			width: 100%;
+		}
+
+		.mat-card-actions {
+			//padding-bottom: 2em;
+			display: flex;
+			flex-direction: row;
+			justify-content:center;
+		}
+
+		//
+		&:before {
+			content: '';
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			background-color: rgba(255,255,255,.9);
+		}
+
+	}
+}
+.admin-cards {
+	margin: 0;
+	padding: 0.5em 2em;
+	display: flex;
+	align-items: flex-start;
+
+	@include transition(all, .2s, ease-out);
+	.card-default-header {
+		border: 1px solid #fbd4bc;
+		position: relative;
+		margin: 1em auto;
+		background-color: #FFFFFF;
+		padding: 2em;
+		border-radius: 10px;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		height: 70px;
+		align-items: stretch;
+		justify-content: space-around;
+		box-shadow: $card_box_shadow;
+		overflow: hidden;
+
+		background-size: contain;
+		background-position: right bottom;
+		background-repeat: no-repeat;
+
+		@include transition(all, .2s, ease-out);
+
+		.example-chip {
+			display: flex;
+			justify-content: center;
+			margin: 1em auto;
+			margin-bottom: 0;
+		}
+		.card-header {
+			color: #000;
+
+		}
+		.card-user-header {
+			position: relative;
+			text-align: center;
+
+			.card-user-title {
+				font-size: 1em;
+				text-align: center;
+				font-weight: bold;
+			}
+
+			.card-user-subtitle {
+				font-size: .8em;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+
+		.admin-menu-trigger {
+			position: absolute;
+			top:0;
+			right:0;
+		}
+
+		.card-user-avatar {
+			position: relative;
+			display: block;
+			display: none;
+			text-align: center;
+			margin-bottom: 2em;
+
+			img {
+				width: 100%;
+				max-width: 100px;
+				border-radius: 100%;
+				margin: 0 auto;
+				box-shadow: 0 0 0 5px #cbcbcb;
+			}
+
+		}
+
+		.card-user-body {
+			position: relative;
+
+			.card-user-body-content {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				margin: 1em auto;
+
+				.card-user-subtitle {
+					font-size: .8em;
+					text-align: center;
+				}
+
+				p {
+					display: block;
+					display: none;
+					text-align: center;
+					margin-bottom: 2em;
+				}
+
+				.card-user-body-content-item {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					text-align: center;
+
+					button {
+						text-align: center;
+						font-weight: bold;
+						border-radius: $border_radius_button;
+						border: 1px solid #cbcbcb;
+						background-color: $colour_white;
+
+						@include transition(all, .2s, ease-out);
+
+						&:hover {
+							color: $colour_white;
+							border: 1px solid $colour_green;
+							background-color: $colour_green;
+						}
+					}
+				}
+			}
+
+		}
+
+		.mat-grid-tile-content {
+			width: 100%;
+		}
+
+		.mat-card-actions {
+			//padding-bottom: 2em;
+			display: flex;
+			flex-direction: row;
+			justify-content:center;
+		}
+
+		//
+		&:before {
+			content: '';
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			background-color: rgba(255,255,255,.9);
+		}
+
+	}
+
+	.admin-card {
+		border: 1px solid rgb(255, 255, 255);
+		position: relative;
+		margin: 1em auto;
+		background-color: #747474;
+		padding: 2em;
+		border-radius: 10px;
+		width: 100%;
+		
+		display: flex;
+		flex-direction: column;
+		height: 800px;
+		align-items: stretch;
+		justify-content: space-around;
+		box-shadow: $card_box_shadow;
+		overflow: hidden;
+
+		background-size: contain;
+		background-position: right bottom;
+		background-repeat: no-repeat;
+
+		@include transition(all, .2s, ease-out);
+
+		.example-chip {
+			display: flex;
+			justify-content: center;
+			margin: 1em auto;
+			margin-bottom: 0;
+		}
+
+		.card-user-header {
+			position: relative;
+			text-align: center;
+
+			.card-user-title {
+				font-size: 1em;
+				text-align: center;
+				font-weight: bold;
+				text-transform: uppercase;
+				margin: 2em auto;
+				margin-bottom: .5em;
+			}
+
+			.card-user-subtitle {
+				font-size: .8em;
+				text-align: center;
+				text-transform: uppercase;
+			}
+		}
+
+		.admin-menu-trigger {
+			position: absolute;
+			top:0;
+			right:0;
+		}
+
+		.card-user-avatar {
+			position: relative;
+			display: block;
+			display: none;
+			text-align: center;
+			margin-bottom: 2em;
+
+			img {
+				width: 100%;
+				max-width: 100px;
+				border-radius: 100%;
+				margin: 0 auto;
+				box-shadow: 0 0 0 5px #cbcbcb;
+			}
+
+		}
+
+		.card-user-body {
+			position: relative;
+
+			.card-user-body-content {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				margin: 1em auto;
+
+				.card-user-subtitle {
+					font-size: .8em;
+					text-align: center;
+				}
+
+				p {
+					display: block;
+					display: none;
+					text-align: center;
+					margin-bottom: 2em;
+				}
+
+				.card-user-body-content-item {
+					position: relative;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					text-align: center;
+
+					button {
+						text-align: center;
+						font-weight: bold;
+						border-radius: $border_radius_button;
+						border: 1px solid #cbcbcb;
+						background-color: $colour_white;
+
+						@include transition(all, .2s, ease-out);
+
+						&:hover {
+							color: $colour_white;
+							border: 1px solid $colour_green;
+							background-color: $colour_green;
+						}
+					}
+				}
+			}
+
+		}
+
+		.mat-grid-tile-content {
+			width: 100%;
+		}
+
+		.mat-card-actions {
+			//padding-bottom: 2em;
+			display: flex;
+			flex-direction: row;
+			justify-content:center;
+		}
+
+		//
+		&:before {
+			content: '';
+			position: absolute;
+			top:0;
+			left:0;
+			width: 100%;
+			height: 100%;
+			pointer-events: none;
+			background-color: rgba(255,255,255,.9);
+		}
+
+	}
+}

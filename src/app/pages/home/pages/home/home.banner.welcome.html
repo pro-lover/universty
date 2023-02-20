@@ -1,0 +1,29 @@
+
+<div class="welcome-hero-content">
+	<p>
+		<mat-toolbar color="primary">
+		  <span>University of Programing</span>
+		  <span class="example-spacer"></span>
+		  <a
+				[routerLink]="['/']"
+				class="button-black" >
+					<span class="skew-fix">Home</span>
+			</a>
+			<a
+				[routerLink]="['/', 'about']"
+				class="button-black" >
+					<span class="skew-fix">About</span>
+			</a>
+			<a
+				[routerLink]="['/', 'auth', 'register']"
+				class="button-black" >
+					<span class="skew-fix">Register</span>
+			</a>
+			<a
+			[routerLink]="['/', 'auth', 'login']"
+			class="button-black loginBtn" >
+				<span class="skew-fix">login</span>
+		</a>
+		</mat-toolbar>
+	  </p>
+</div>

@@ -1,0 +1,81 @@
+
+<mat-toolbar class="bapp-admin-toolbar">
+	<span class="toolbar-title">
+		<span *ngIf="isAddMode">Add Client Option</span>
+		<span *ngIf="!isAddMode">Edit Client Option</span>
+	</span>
+	<span class="example-spacer"></span>
+
+	<div class="btn-group">
+		<button (click)="back()" class="btn btn-dark">Back</button>
+	</div>
+
+	<button mat-icon-button (click)="help()" class="Help" aria-label="Help">
+		<mat-icon>help</mat-icon>
+	</button>
+
+</mat-toolbar>
+
+<form class="form-model-edit" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row row">
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Name</mat-label>
+				<mat-select formControlName="accountId" [ngClass]="{ 'is-invalid':  f['accountId'].errors }" required>
+					<ng-container *ngFor="let account of dataAccounts$| async">
+						<mat-option [value]="account.id" *ngIf="account.status === true">
+							<span>{{ account.firstName }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['nameId'].errors" class="invalid-feedback">
+					<div *ngIf="f['nameId'].errors['required']">Name is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Brand</mat-label>
+				<mat-select formControlName="brandId" [ngClass]="{ 'is-invalid':  f['brandId'].errors }" required>
+					<ng-container *ngFor="let brand of dataBrands$| async">
+						<mat-option [value]="brand.id" *ngIf="brand.status === true">
+							<span>{{ brand.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['brandId'].errors" class="invalid-feedback">
+					<div *ngIf="f['brandId'].errors['required']">brand is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-4">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Client description</mat-label>
+				<input matInput placeholder="" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" required />
+				<mat-error *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+					<div *ngIf="f['description'].errors['required']">Client description is required</div>
+				</mat-error>
+			</mat-form-field>
+		</div>
+
+    </div>
+	<hr />
+	<br />
+    <div class="form-group">
+		<div class="btn-group">
+			<button [disabled]="loading" class="btn btn-success">
+				<span *ngIf="loading" class="mr-1 spinner-border spinner-border-sm"></span>
+				Save
+			</button>
+			<a [ngClass]="{ 'disabled': loading }" class="btn btn-secondary" (click)="back()">
+				Cancel
+			</a>
+		</div>
+	</div>
+</form>

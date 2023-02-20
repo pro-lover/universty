@@ -1,0 +1,272 @@
+
+@import '../../../../theme/app.global.scss';
+
+header {
+	//border-bottom: 1px solid #ffc600;
+	//box-shadow: 0 3px 11px 0 #e8eafc, 0 3px 3px -2px #b2b2b21a, -1px -14px 7px 20px #9a9a9a;
+
+	&.sticky {
+		top:0;
+		left:0;
+	}
+}
+.logo {
+	text-align: center;
+	padding: 15px 0px;
+	img {
+	  width: 100px;
+	}
+  }
+
+.navbar {
+
+	//background-color: rgb(30 26 26 / 98%);
+
+	.navbar-brand {
+
+		.img {
+			
+			width: 100%;
+			height: auto;
+			max-width: 60px;
+			display: inline;
+			position: relative;
+			//border: 1px solid #FFFFFF;
+			//border-radius: 50%;
+
+			@include transition(all, .2s, ease-out);
+
+			@media screen and (max-width: get-media(s)) {
+				max-width: 60px;
+				height: auto;
+			}
+		}
+		
+	}
+
+	.navbar-toggler {
+		border: none;
+
+		&:focus,
+		&:active {
+			box-shadow: none;
+		}
+	}
+
+	.nav-link {
+		padding-top: 1em;
+		padding-bottom: 1em;
+
+		@include transition(all, .2s, ease-out);
+
+		&.active {
+			color: #ffc600;
+		}
+	}
+
+	.dropdown-menu {
+		background: rgba(30, 26, 26, 0.98);
+		.dropdown-item {
+			color: #FFFFFF;
+
+			&.disabled,
+			&:disabled {
+				opacity: 0.5;
+			}
+
+			&.active,
+			&:active {
+				color: #000000;
+			}
+
+			&:hover {
+				color: #000000;
+				background-color: #fdcc09;
+			}
+		}
+	}
+
+	.dropdown-item.active,
+	.dropdown-item:active {
+		color: #000000;
+		background-color: #fdcc09;
+	}
+
+	.menu-aux {
+		position: relative;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+
+		.menu-button-support {
+			color:rgba(255, 255, 255, 0.55);
+			//position: absolute;
+			//left:-30%;
+			//top:8px;
+			@include transition(all, .2s, ease-out);
+
+			&.active,
+			&:hover {
+				color: #fdcc09;
+			}
+		}
+	}
+
+	.account-name {
+		color: #ffc600;
+	}
+
+
+	@media screen and (max-width: get-media(s)) {
+		.dropdown-menu {
+			background: transparent;
+			border: none;
+
+			.dropdown-item {
+				color: #FFFFFF;
+				padding-top: 0.5em;
+				padding-bottom: 0.5em;
+			}
+
+			.dropdown-item.active,
+			.dropdown-item:active {
+				color: #000000;
+				background-color: #fdcc09;
+			}
+		}
+	}
+}
+
+mat-toolbar {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+  }
+  
+  ul {
+	list-style-type: none;
+	li {
+		float: left;
+	}
+  }
+  button {
+	outline: none;
+	border: 0;
+	background: transparent;
+  }
+  .user {
+	font-size: 14px;
+  }
+  mat-toolbar {
+	background-color: #00000039;
+  }
+  .user-image {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	&-icon {
+	  height: 18px;
+	  font-size: 16px;
+	}
+  }
+  
+  ::ng-deep {
+	.mat-menu-content {
+	  width: 100%;
+	}
+  }
+  :host {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+  }
+  
+  mat-drawer {
+	width: 260px;
+  }
+  mat-drawer-container {
+	height: 100%;
+  }
+  
+  mat-drawer {
+	background: #0f172a;
+  }
+  $colors: #a2b9bc,#6b5b95,#feb236, #d64161, #ff7b25, #b2ad7f,  #878f99;
+
+  
+.avatar {
+    color: #ffc600;
+    padding: 9px;
+    display: inline;
+    justify-content: center;
+    align-items: center;
+    border-radius:100%;
+	border: 1px solid black;
+    width:50px;
+    height: 50px;
+    font-weight: 600;
+  }
+
+  @for $i from 1 through length($colors) {
+    .avatar:nth-child(#{length($colors)}n+#{$i}) {
+        background: lighten(nth($colors, $i), 20%);
+    }
+}
+.card{
+	.avatar {
+		padding: 30px;
+		
+	  }
+}
+
+	.card {
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		max-width: 300px;
+		margin: -8px 0px 0px 0px;
+		text-align: center;
+		font-family: arial;
+		button {
+			outline: 0;
+			text-align: right;
+			cursor: pointer;
+			font-size: 18px;
+			margin: -40px 0px 0px 0px;
+			padding: 0px 0px 0px 0px ;
+			justify-content: center;
+			width:100%;
+    	height: 50px;
+		  }
+		  button:hover, a:hover {
+			
+			mat-icon{
+				color: #ffc600;
+			  }
+		  }
+		  mat-icon{
+			color: white;
+		  }
+		  
+	  }
+	  .headerbg{
+		background-color: #00000039;
+    	width: 250px;
+		margin-bottom: 23px;
+		border-radius: 3px;
+		p{
+			color: white;
+			margin-bottom: 30px;
+			margin-top: 18px;
+		}
+		
+	  }
+	  .title {
+		color: grey;
+		font-size: 18px;
+	  }
+	  .mat-menu{padding: 0%;}
+
+
+
+  
+  
+  

@@ -1,0 +1,72 @@
+<div class="container" *ngIf="primaryData ; let allBriefs; else noContent">
+  <ng-container *ngFor="let element of allBriefs" >
+    <ng-container *ngIf="element.id === data.selectedBriefId">
+      <img mat-card-image src="../../../../assets/images/huntL.png" alt="" />
+      <h3 mat-dialog-title>Brief</h3>
+      <mat-dialog-content class="mat-typography" >
+      <mat-divider></mat-divider>
+      <div class="row">
+        <div class="column" ><h3>JOB NO:</h3></div>
+        <div class="column" ><p>....</p></div>
+        <div class="column" ><h3>CLIENT:</h3></div>
+        <div class="column" ><p>{{element.clientId}}</p></div>
+        <div class="column" ><h3>DeadlineTime:</h3></div>
+        <div class="column" ><p>{{element.deadlineTime}}</p></div>
+        <div class="column" ><h3>DeadlineDate:</h3></div>
+        <div class="column" ><p>{{element.deadlineDate | date}}</p></div>
+        <div class="column" ><h3>BUDGET:</h3></div>
+        <div class="column" ><p>R{{element.budget}}</p></div>
+        <div class="column" ><h3>Date Brief Created:</h3></div>
+        <div class="column" ><p>{{element.created | date:'medium'}}</p></div>
+      </div>
+      <mat-divider></mat-divider>
+        
+          <h3>Offer</h3>
+          <p>{{element.offer}}</p>
+        
+          <h3>Objective</h3>
+          <p>{{element.objective}}</p>
+        
+          <h3>business</h3>
+          <p>{{element.business}}</p>
+    
+          <h3>targetAudience</h3>
+          <p>{{element.targetAudience}}</p>
+
+          <h3>targetAudienceInsight</h3>
+          <p>{{element.targetAudienceInsight}}</p>
+  
+          <h3>targetAudienceOuttake</h3>
+          <p>{{element.targetAudienceOuttake}}</p>
+  
+          <h3>singleMindedThought</h3>
+          <p>{{element.singleMindedThought}}</p>
+  
+          <h3>brandTone</h3>
+          <p>{{element.brandTone}}</p> 
+
+          <div class="row">
+            <div class="column" ><h3>Team:</h3></div>
+            <div class="column" >
+              <ng-container  *ngFor="let teamsdata of element.teams">
+							  <p>- {{teamsdata.name}}</p>
+						  </ng-container>
+            </div>
+            <div class="column" ><h3>Brand KPIs:</h3></div>
+            <div class="column" >
+              <ng-container  *ngFor="let brandKPIdata of element.brandKPIs">
+                <p>- {{brandKPIdata.name}}</p>
+              </ng-container>
+            </div>
+            <div class="column" ><h3>briefphase:</h3></div>
+            <div class="column" ><p>{{element.briefphase.name}}</p></div>
+            <div class="column" ><h3>Creative Execution:</h3></div>
+            <div class="column" ><p>{{element.creativeexecution.name}}</p></div>
+          </div>
+        </mat-dialog-content>
+    </ng-container>
+  </ng-container>
+</div>
+<ng-template #noContent>
+	Loading...
+</ng-template>

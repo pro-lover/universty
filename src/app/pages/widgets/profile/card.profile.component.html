@@ -1,0 +1,25 @@
+<div class="dashboard-card card-profile">
+
+	<mat-card>
+
+		<mat-card-content>
+			<div class="card">
+
+					<div class="text-center" *ngIf="account">
+						<img src="../assets/images/android-icon-192x192.png" class="rounded-circle profile-picture" />
+						<h3 class="mt-2">{{account.firstName}} {{account.lastName}}</h3>
+						<span class="mt-1 clearfix">{{account.role}}</span>
+						<hr class="line">
+						<small class="mt-2">
+							<strong>Member since:</strong> {{account.created | HumanDateFormatPipe}}
+						</small>
+						<div class="profile mt-4">
+							<button class="profile_button px-5" routerLink="../../admin/accounts/edit/">Edit profile</button>
+						</div>
+					</div>
+
+			</div>
+		</mat-card-content>
+	</mat-card>
+</div>
+

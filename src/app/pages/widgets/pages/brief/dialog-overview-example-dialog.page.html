@@ -1,0 +1,23 @@
+<ng-container *ngIf="dataBriefs$ ">
+        <div mat-dialog-content>
+        <p>Change Brief Progress</p>
+        <section>
+                <ng-container *ngFor="let briefProgress of dataBriefProgress">
+                    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+                        <mat-button-toggle (click)="saveBriefProgress(briefProgress.id,briefProgress.name)" value="inProgress">{{briefProgress.name}}</mat-button-toggle>
+                    </mat-button-toggle-group>
+                </ng-container>
+                <ng-container *ngFor="let element of primaryData">
+                        <ng-container *ngIf="element.id === this.data.selectedBriefId">
+                                <p>Current brief state is : {{element.role}}</p>
+                                <p>selected : {{briefProgressVelue}}</p>
+                        </ng-container>
+
+                </ng-container>
+        </section>
+
+        </div>
+        <div mat-dialog-actions>
+                <button mat-button mat-dialog-close>Close</button>
+        </div>
+</ng-container>

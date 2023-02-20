@@ -1,0 +1,116 @@
+
+<mat-toolbar class="bapp-admin-toolbar">
+	<span class="toolbar-title">
+		<span *ngIf="isAddMode">Add Client Option</span>
+		<span *ngIf="!isAddMode">Edit Client Option</span>
+	</span>
+	<span class="example-spacer"></span>
+
+	<div class="btn-group">
+		<button (click)="back()" class="btn btn-dark">Back</button>
+	</div>
+
+	<button mat-icon-button (click)="help()" class="Help" aria-label="Help">
+		<mat-icon>help</mat-icon>
+	</button>
+
+</mat-toolbar>
+
+<form class="form-model-edit" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row row">
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Name</mat-label>
+				<mat-select formControlName="accountId" [ngClass]="{ 'is-invalid':  f['accountId'].errors }" required>
+					<ng-container *ngFor="let account of dataAccounts$| async">
+						<mat-option [value]="account.id" *ngIf="account.status === true">
+							<span>{{ account.firstName }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['accountId'].errors" class="invalid-feedback">
+					<div *ngIf="f['accountId'].errors['required']">Brief team is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-4">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>description</mat-label>
+				<input matInput placeholder="" formControlName="description" [ngClass]="{ 'is-invalid': submitted && f['description'].errors }" required />
+				<mat-error *ngIf="submitted && f['description'].errors" class="invalid-feedback">
+					<div *ngIf="f['description'].errors['required']">description is required</div>
+				</mat-error>
+			</mat-form-field>
+		</div>
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>job title</mat-label>
+				<mat-select formControlName="jobtitleId" [ngClass]="{ 'is-invalid':  f['jobtitleId'].errors }" required>
+					<ng-container *ngFor="let jobTitle of dataJobTitles$| async">
+						<mat-option [value]="jobTitle.id" *ngIf="jobTitle.status === true">
+							<span>{{ jobTitle.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['jobtitleId'].errors" class="invalid-feedback">
+					<div *ngIf="f['jobtitleId'].errors['required']">Brief team is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Team</mat-label>
+				<mat-select formControlName="teamId" [ngClass]="{ 'is-invalid':  f['teamId'].errors }" required>
+					<ng-container *ngFor="let Team of dataTeams$| async">
+						<mat-option [value]="Team.id" *ngIf="Team.status === true">
+							<span>{{ Team.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['teamId'].errors" class="invalid-feedback">
+					<div *ngIf="f['teamId'].errors['required']">Brief team is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>jobLevel</mat-label>
+				<mat-select formControlName="joblevelId" [ngClass]="{ 'is-invalid':  f['joblevelId'].errors }" required>
+					<ng-container *ngFor="let jobLevel of dataJobLevels$| async">
+						<mat-option [value]="jobLevel.id" *ngIf="jobLevel.status === true">
+							<span>{{ jobLevel.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['joblevelId'].errors" class="invalid-feedback">
+					<div *ngIf="f['joblevelId'].errors['required']">Brief joblevel is required</div>
+				</mat-error>
+				<mat-hint>message</mat-hint>
+			</mat-form-field>
+		</div>
+
+    </div>
+	<hr />
+	<br />
+    <div class="form-group">
+		<div class="btn-group">
+			<button [disabled]="loading" class="btn btn-success">
+				<span *ngIf="loading" class="mr-1 spinner-border spinner-border-sm"></span>
+				Save
+			</button>
+			<a [ngClass]="{ 'disabled': loading }" class="btn btn-secondary" (click)="back()">
+				Cancel
+			</a>
+		</div>
+	</div>
+</form>

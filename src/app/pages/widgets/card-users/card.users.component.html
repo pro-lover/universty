@@ -1,0 +1,46 @@
+<div class="dashboard-card card-stats">
+
+	<mat-card>
+		<mat-card-title>
+			{{statModelTitle}}
+		</mat-card-title>
+		<mat-card-content>
+
+			<ng-scrollbar
+				#scrollbarRef
+				[appearance]="'compact'"
+				[track]="'vertical'"
+				[thumbClass]="'scrollbar-thumb'"
+				[autoHeightDisabled]="true"
+				[autoWidthDisabled]="true"
+				style="width:100%;height:225px;">
+
+
+					<div class="row users-list-cards" *ngIf="dataView$ | async">
+						<ng-container *ngFor="let model of dataView$ | async;let indexOfelement = index;">
+							<div class="col-12" *ngIf="model.status === true">
+								<div class="users-list-card">
+									<div class="avatar">
+										<!--
+										<img src="https://picsum.photos/50" />
+										-->
+										<img src="../assets/images/android-icon-192x192.png" alt="{{model.firstName}} {{model.lastName}} ({{model.title}})" />
+									</div>
+									<div class="name">
+										{{model.firstName}} {{model.lastName}} ({{model.title}})
+										<br />
+										<p class="stats">
+											Member since: {{account.created | HumanDateFormatPipe}}
+										</p>
+									</div>
+								</div>
+							</div>
+						</ng-container>
+					</div>
+
+			</ng-scrollbar>
+
+
+		</mat-card-content>
+	</mat-card>
+</div>

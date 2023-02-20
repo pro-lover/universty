@@ -1,0 +1,10 @@
+
+<mat-drawer-container>
+	<mat-drawer-content>
+		<app-header (toggleSidebarForMe)="sideBarToggler()" (toggleSidebarRightForMe)="sideBarRightToggler()"></app-header>
+		<div class="container-fluid flex-1" style="padding:0;margin:0;">
+			<ng-content style="padding:0;margin:0;"></ng-content>
+		</div>
+		<app-footer></app-footer>
+	</mat-drawer-content>
+</mat-drawer-container>

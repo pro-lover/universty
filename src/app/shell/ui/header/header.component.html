@@ -1,0 +1,62 @@
+<header class="sticky">
+<mat-toolbar *ngIf="isLoggedIn$ | async;">
+	<mat-toolbar-row *ngIf="account" class="justify-content-between">
+	  <button mat-icon-button (click)="toggleSidebar()">
+		
+	  </button>
+	  <div class="logo">
+		<img src="../../../../assets/images/tbwa_logo_black.png" alt="Company Logo" />
+	  </div>
+
+	  <div class="row mr-2 ml-auto">
+		<ul class=" m-0 align-items-center">
+			<li>
+				<button  mat-icon-button>
+					<mat-icon matBadge="8">notifications</mat-icon>
+				</button>
+			</li>
+			<li>
+				<button mat-icon-button (click)="toggleSidebarRight()">
+					<mat-icon>help</mat-icon>
+				</button>
+			</li>
+			<li>
+				<button mat-icon-button (click)="toggleSidebarRight()">
+					<mat-icon>calendar_today</mat-icon>
+				</button>
+			</li>
+
+		  <li *ngIf="account.role !== 'Student'">
+			<button
+			  mat-button
+			  [matMenuTriggerFor]="menu"
+			  class="user mt-2 d-flex align-items-center"
+			>
+			<span class="avatar"> {{getInitials(account.firstName,account.lastName)}}</span>
+			</button>
+			<mat-menu class="mat-menu" #menu="matMenu">
+				<div class="card">
+					<div class="headerbg">
+						<p>{{account.role}}</p>
+						<span class="avatar"> {{getInitials(account.firstName,account.lastName)}}</span>
+						<button mat-menu-item appClickTracking routerLink="/admin/accounts/edit/{{account.id}}" routerLinkActive="active">
+							<mat-icon>edit</mat-icon>
+						</button>
+					</div>
+					<strong>{{account.firstName}} {{account.lastName}}</strong>
+					<p class="title">{{account.email}}</p>
+
+				  </div>
+
+			  	<button mat-menu-item appClickTracking (click)="logout()">
+					<mat-icon>exit_to_app</mat-icon>
+					Logout
+			  	</button>
+			</mat-menu>
+		  </li>
+		</ul>
+	  </div>
+	</mat-toolbar-row>
+  </mat-toolbar>
+</header>
+

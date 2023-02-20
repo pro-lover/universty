@@ -1,0 +1,85 @@
+
+<div class="row">
+	<p>
+		<mat-toolbar>
+		  <span>University of Programing</span>
+		  <span class="example-spacer"></span>
+		  <a
+				[routerLink]="['/']"
+				class="button-black" >
+					<span class="skew-fix">Home</span>
+			</a>
+			<a
+				[routerLink]="['/','about']"
+				class="button-black" >
+					<span class="skew-fix">About</span>
+			</a>
+			<a
+				[routerLink]="['/', 'auth', 'register']"
+				class="button-black" >
+					<span class="skew-fix">Register</span>
+			</a>
+			<a
+			[routerLink]="['/', 'auth', 'login']"
+			class="button-black loginBtn" >
+				<span class="skew-fix">login</span>
+		</a>
+		</mat-toolbar>
+	  </p>
+	<div class=""  style="text-align: center;">
+		<a [routerLink]="['../../']">
+			<img src="./assets/images/tbwa_logo_white.png" class="form-logo" />
+		</a>
+	</div>
+	<div class="">
+		<mat-card class="form-card">
+			<mat-card-title>
+				Login
+			</mat-card-title>
+			<br />
+			<form class="form-login" [formGroup]="form" (ngSubmit)="onSubmit()">
+				<div class="form-row row">
+					<div class="form-group col-12 col-md-12">
+						<div class="mate-form-field-flex">
+							<mat-form-field class="mat-form-field" appearance="fill">
+								<mat-label>Email</mat-label>
+								<input matInput type="email" placeholder="" formControlName="email" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" required />
+								<mat-error *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+									<div *ngIf="f['email'].errors['required']">Email is required</div>
+									<div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
+								</mat-error>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-row row">
+					<div class="form-group col-12 col-md-12">
+						<div class="mate-form-field-flex">
+							<mat-form-field class="mat-form-field" appearance="fill">
+								<mat-label>Password</mat-label>
+								<input matInput type="password" placeholder="" formControlName="password" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
+								<mat-error *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+									<div *ngIf="f['password'].errors['required']">Password is required</div>
+									<div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
+								</mat-error>
+							</mat-form-field>
+						</div>
+					</div>
+				</div>
+				<mat-card-actions class="mat-card-actions button-default button-slanted">
+					<button [disabled]="loading" mat-flat-button color="primary" >
+						<span class="button-slanted-content">Login</span>
+						<span *ngIf="loading" class="mr-1 spinner-border spinner-border-sm"></span>
+					</button>
+					<!--
+					<a routerLink="../register" mat-stroked-button color="primary">Register</a>
+					<a routerLink="../forgot-password" mat-flat-button color="accent">Forgot Password?</a>
+					-->
+
+				</mat-card-actions>
+			</form>
+		</mat-card>
+	</div>
+	<div class="col-12 col-md-3"></div>
+</div>

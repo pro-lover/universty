@@ -1,0 +1,122 @@
+<table class="table table-striped" matSort >
+	<thead>
+		<tr>
+			<th mat-sort-header="createdAt" >Created At</th>
+			<th mat-sort-header="Offer" >Offer</th>
+			<th mat-sort-header="objective" >Objective</th>
+			<th mat-sort-header="business" >Business</th>
+			<th mat-sort-header="deadlineTime" >DeadlineTime</th>
+			<th mat-sort-header="deadlineDate" >DeadlineDate</th>
+			<th mat-sort-header="role" >Brief Progress</th>
+			<th mat-sort-header="status" >Status</th>
+			<th ></th>
+		</tr>
+	</thead>
+	<tbody>
+		<ng-container >
+			<tr *ngFor="let model of dataView;let indexOfelement = index;index as i;">
+				<ng-container *ngIf="model.role === briefProgress">
+					<ng-container *ngIf="(dataView | idByKey : 'client' : indexOfelement : brandDataviews : myclient) === brandDataviews">
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.created | date}}
+						</td>
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.offer}}{{indexOfelement}}
+						</td>
+
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.objective}}
+						</td>
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.business}}
+						</td>
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.deadlineTime}}
+						</td>
+
+						<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }" (click)="openDialogView(model.id)">
+							{{model.deadlineDate}}
+						</td>
+					<td [ngClass]="{ 'deleted-record': model.deletedAt !== null }">
+						<button mat-raised-button (click)="openDialog(model.id)">
+							Change brief progress
+						</button>
+					</td>
+					<td >
+						<mat-slide-toggle
+							color="primary"
+							[disabled]="model.deletedAt !== null"
+							(change)="toggleStatus($event, model.id)"
+							[checked]="model.status">
+						</mat-slide-toggle>
+					</td>
+					<td style="white-space: nowrap;text-align: center;">
+
+						<button
+							mat-icon-button
+							[disabled]="isDeleting === model.id || isAuditing === model.id || isRestoring === model.id"
+							[matMenuTriggerFor]="menu" aria-label="">
+								<span
+									*ngIf="isDeleting === model.id || isAuditing === model.id || isRestoring === model.id"
+									class="spinner-border spinner-border-sm">
+								</span>
+								<mat-icon>
+									more_vert
+								</mat-icon>
+						</button>
+						<mat-menu #menu="matMenu">
+	
+							<button
+								[disabled]="model.deletedAt !== null"
+								routerLink="edit/{{model.id}}"
+								mat-menu-item>
+									<mat-icon>edit</mat-icon>
+									<span>Edit</span>
+							</button>
+	
+							<button
+								(click)="audit(model.id)"
+								[disabled]="model.deletedAt !== null"
+								mat-menu-item disabled>
+									<!--<mat-icon>history</mat-icon>-->
+									<mat-icon>track_changes</mat-icon>
+									<span>Audit</span>
+							</button>
+							<button
+								(click)="deleteModel(model.id)"
+								[disabled]="model.deletedAt !== null"
+								mat-menu-item>
+									<mat-icon>delete</mat-icon>
+									<span>Delete</span>
+							</button>
+							<button
+								(click)="restoreModel(model.id)"
+								[disabled]="model.deletedAt === null"
+								mat-menu-item>
+									<mat-icon>restore_from_trash</mat-icon>
+									<span>Restore</span>
+							</button>
+						</mat-menu>
+					</td>
+				</ng-container>
+				</ng-container>
+			</tr>
+			
+		</ng-container>
+		<ng-template #contentLoading>
+			<tr style="background-color: #f5f5f5;">
+				<td colspan="5" style="padding-top: 20px;">
+					<ngx-skeleton-loader count="1" appearance="line" animation="progress"></ngx-skeleton-loader>
+				</td>
+			</tr>
+		</ng-template>
+	</tbody>
+	<tfoot>
+		<tr>
+			<td colspan="5">
+				
+			</td>
+		</tr>
+	</tfoot>
+
+</table>
