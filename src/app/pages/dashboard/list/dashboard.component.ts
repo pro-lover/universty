@@ -1,6 +1,7 @@
 import {
 	Component, OnDestroy, OnInit
 } from '@angular/core';
+import { Router } from '@angular/router';
 import {
 	Account,Brand,Client,BrandKPI,Brief,BriefPhase,Creative,CreativeExecution,JobLevel,JobTitle,Team,
 	Role
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	public refreshCarousel$: Observable<boolean>;
 
 	constructor(
+		private router: Router,
 		private authService: AuthService,
 		private themeService: ThemeService,
 		private accountService: AccountService,
@@ -168,5 +170,10 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	private initialiseJobTitle(jobTitles:JobTitle[]):void {this.jobTitleData = jobTitles;}
 	private initialiseTeam(teams:Team[]):void {this.teamData = teams;}
 
-	//_______________________________________________[ If user is a client]
+	public logout() {
+		this.accountService.logout();
+
+		const { root, signIn } = ROUTER_UTILS.config.auth;
+		this.router.navigate(['/']);
+	}
 }

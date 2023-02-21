@@ -101,7 +101,7 @@
 				<div class="mate-form-field-flex">
 				<mat-form-field class="mat-form-field" appearance="fill">
 					<mat-label>ID Number</mat-label>
-					<input matInput placeholder="" formControlName="IDNo" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" required />
+					<input matInput placeholder="" formControlName="IDNo" [ngClass]="{ 'is-invalid': submitted && f['IDNo'].errors }" required />
 					<mat-error *ngIf="submitted && f['IDNo'].errors" class="invalid-feedback">
 						<div *ngIf="f['IDNo'].errors['required']">ID Number is required</div>
 					</mat-error>
@@ -112,9 +112,20 @@
 				<div class="mate-form-field-flex">
 				<mat-form-field class="mat-form-field" appearance="fill">
 					<mat-label> Current Address</mat-label>
-					<input matInput placeholder="" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f['lastName'].errors }" required />
+					<input matInput placeholder="" formControlName="address" [ngClass]="{ 'is-invalid': submitted && f['address'].errors }" required />
 					<mat-error *ngIf="submitted && f['address'].errors" class="invalid-feedback">
 						<div *ngIf="f['address'].errors['required']">Current Address required</div>
+					</mat-error>
+				</mat-form-field>
+				</div>
+			</div>
+			<div class="form-group col-12 col-md-6">
+				<div class="mate-form-field-flex">
+				<mat-form-field class="mat-form-field" appearance="fill">
+					<mat-label> Phone number</mat-label>
+					<input matInput placeholder="" formControlName="phoneNo" [ngClass]="{ 'is-invalid': submitted && f['phoneNo'].errors }" required />
+					<mat-error *ngIf="submitted && f['phoneNo'].errors" class="invalid-feedback">
+						<div *ngIf="f['phoneNo'].errors['required']">Phone number required</div>
 					</mat-error>
 				</mat-form-field>
 				</div>

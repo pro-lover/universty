@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 const crypto = require("crypto");
 const { Op } = require('sequelize');
 const axios = require('axios');
+const console = require('console');
 
 const bcryptSaltRounds = bcrypt.genSaltSync(10);
 
@@ -106,6 +107,88 @@ async function register(params, origin) {
     const isFirstAccount = (await db.Account.count()) === 0;
     account.role = isFirstAccount ? Role.Admin : Role.Student;
     account.verificationToken = randomTokenString();
+
+    //------[ Create student number ]
+    //________________________________[current date]
+    let objectDate = new Date();
+    let daym = objectDate.getDate();
+    let monthm = objectDate.getMonth();
+    let yearm = objectDate.getFullYear();
+    let IdNo = account.dataValues.IDNo ;
+    let Idlength = IdNo.length;
+    let totOd;
+    let TotEven = 0;
+    let TotOdd = 0;
+    const IdHolder = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+    let finYear = "19";
+    let finGender = "male";
+    let finCitizenship = "SA Citizen"
+
+    for (let index = 0; index < IdNo.length; index++) {
+        let currentChar = IdNo.slice(index,index + 1);
+        IdHolder[index]=currentChar;
+        if (index % 2 == 0) {
+            TotEven = TotEven+parseInt(IdHolder[index]);
+        }
+        if (index % 2 == 1) {
+            TotOdd = TotOdd+IdHolder[index];
+        }
+    }
+    if(IdHolder[0]>=3)
+    {
+        finYear = "19"+IdHolder[0];
+    }else{
+        finYear = "20"+IdHolder[0];
+    }
+    const d = new Date(IdHolder[2]+IdHolder[3]+"/"+IdHolder[4]+IdHolder[5]+"/"+finYear+IdHolder[1]);
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    let day = IdHolder[4]+IdHolder[5];
+    let month = months[d.getMonth()];
+    let year = d.getFullYear();
+    account.dateOfBirth = day +" "+month+" "+year;
+
+    if(IdHolder[6]>=5)
+    {
+        finGender = "Male";
+    }else{
+        finGender = "Female";
+    }
+    account.gender = finGender;
+
+    if(IdHolder[10] === "0")
+    {
+        finCitizenship = "SA Citizen";
+    }else{
+        finCitizenship = "Permanent resident";
+    }
+    account.citizenship = finCitizenship;
+    let totOddRes = 0;
+    totOddRes = parseInt(TotOdd)*2;
+    secLop(totOddRes.toString(), TotEven,IdHolder);
+    function secLop(string,int,IdHolder){
+        const evenHolder = [1,2,3,4,5,6,7,8,9,10,11,12,13]
+        let totResult = 0;
+        for (let i = 0; i < string.length; i++) {
+            let evenCurrentChar = string.slice(i,i + 1);
+            evenHolder[i]=evenCurrentChar;
+            totResult = totResult + parseInt(evenHolder[i]);
+        }
+        finalResult((totResult+int).toString(),IdHolder)
+    }
+
+    function finalResult(int,IdHolder){
+        let ten = 10;
+        let sliceValue = int.slice(int.length-1,int.length);
+        let toFinal = ten - sliceValue
+        toFinal = '0'+toFinal.toString()
+        toFinal = parseInt(toFinal.slice(toFinal.length-1,toFinal.length))
+        IdHolder[12] = toFinal;
+    }
+
+    const secData = new Date();
+    let secDatas = secData.getSeconds();
+        
+    account.studentNo =  yearm.toString()+IdHolder[6]+IdHolder[7]+IdHolder[8]+IdHolder[9]+secDatas.toString();
 
     // hash password
     account.passwordHash = await hash(params.password);
@@ -362,8 +445,8 @@ function randomTokenString() {
 
 function basicDetails(account) {
 	//return account;
-    const { id, title, firstName, lastName, IDNo, address, email, role, status, created, deletedAt, updated, isVerified, history, version, lastEditedBy } = account;
-    return { id, title, firstName, lastName, IDNo, address, email, role, status, created, deletedAt, updated, isVerified, history, version, lastEditedBy };
+    const { id, title, phoneNo, citizenship, gender, dateOfBirth, studentNo, firstName, lastName, IDNo, address, email, role, status, created, deletedAt, updated, isVerified, history, version, lastEditedBy } = account;
+    return { id, title, phoneNo, citizenship, gender, dateOfBirth, studentNo, firstName, lastName, IDNo, address, email, role, status, created, deletedAt, updated, isVerified, history, version, lastEditedBy };
 }
 
 // EMAILS

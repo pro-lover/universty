@@ -5,6 +5,11 @@ export class Account {
 	title!: string;
 	firstName!: string;
 	lastName!: string;
+	studentNo!: string;
+	dateOfBirth!: string;
+	phoneNo!: string;
+	gender!: string;
+	citizenship!: string;
 	IDNo!: string;
 	address!: string;
 	email!: string;
