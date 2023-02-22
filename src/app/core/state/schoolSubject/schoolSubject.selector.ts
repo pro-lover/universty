@@ -1,11 +1,11 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PageQuery } from './brandKPI.actions';
-import * as fromModel from './brandKPI.reducer';
-import { State } from "./brandKPI.state";
+import { PageQuery } from './schoolSubject.actions';
+import * as fromModel from './schoolSubject.reducer';
+import { State } from "./schoolSubject.state";
 
 
 
-export const selectCollectionState = createFeatureSelector<State>("brandKPIs");
+export const selectCollectionState = createFeatureSelector<State>("subjects");
 
 
 export const selectById = (modelId:number) => createSelector(

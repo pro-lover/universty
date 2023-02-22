@@ -64,9 +64,9 @@
 
 			<mat-form-field appearance="fill">
 				<mat-label>Brand KPIs</mat-label>
-				<mat-select formControlName="brandKPIId" multiple>
-					<ng-container *ngFor="let BrandKPI of dataBrandKPIs$| async">
-				  <mat-option [value]="BrandKPI.id">{{BrandKPI.name }}</mat-option>
+				<mat-select formControlName="SchoolSubjectId" multiple>
+					<ng-container *ngFor="let SchoolSubject of dataSchoolSubjects$| async">
+				  <mat-option [value]="SchoolSubject.id">{{SchoolSubject.name }}</mat-option>
 				</ng-container>
 				</mat-select>
 			  </mat-form-field>

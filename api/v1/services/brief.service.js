@@ -25,7 +25,7 @@ async function getAll() {
 			['offer', 'ASC']
 		],include:[
 			{
-				model: db.BrandKPI,
+				model: db.SchoolSubject,
 				//as:'country',
 				required:false,
 			},
@@ -117,7 +117,7 @@ async function create(params, editId) {
 		);
 
 		await model.setTeams(params.teamId, { transaction });
-		await model.setBrandKPIs(params.brandKPIId, { transaction });
+		await model.setSchoolSubjects(params.subjectId, { transaction });
 
 		await transaction.commit();
 
@@ -241,6 +241,6 @@ async function getHistoryById(id) {
 }
 
 function basicDetails(model) {
-    const { id, offer, objective, business, targetAudience, targetAudienceInsight, targetAudienceOuttake, singleMindedThought, brandTone, budget, deadlineDate,deadlineTime,role,status, created, updated, deletedAt, history, version, lastEditedBy,brandKPIs,teams, briefphaseId,briefphase,creativeexecutionId,creativeexecution,clientId,client} = model;
-    return { id, offer, objective, business, targetAudience, targetAudienceInsight, targetAudienceOuttake, singleMindedThought, brandTone, budget, deadlineDate,deadlineTime,role,status, created, updated, deletedAt, history, version,lastEditedBy,brandKPIs,teams, briefphaseId,briefphase,creativeexecutionId,creativeexecution,clientId,client };
+    const { id, offer, objective, business, targetAudience, targetAudienceInsight, targetAudienceOuttake, singleMindedThought, brandTone, budget, deadlineDate,deadlineTime,role,status, created, updated, deletedAt, history, version, lastEditedBy,subjects,teams, briefphaseId,briefphase,creativeexecutionId,creativeexecution,clientId,client} = model;
+    return { id, offer, objective, business, targetAudience, targetAudienceInsight, targetAudienceOuttake, singleMindedThought, brandTone, budget, deadlineDate,deadlineTime,role,status, created, updated, deletedAt, history, version,lastEditedBy,subjects,teams, briefphaseId,briefphase,creativeexecutionId,creativeexecution,clientId,client };
 }

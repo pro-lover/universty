@@ -49,7 +49,7 @@ async function initialize() {
 /**
 	 * DATA MODEL - BRAND KPI
 	 */
-	db.BrandKPI = require('../models/brand-KPI.model')(sequelize);
+	db.SchoolSubject = require('../models/school-subject.model')(sequelize);
 	/**
 	 * DATA MODEL - BRAND KPI
 	 */
@@ -105,8 +105,8 @@ async function initialize() {
 	db.Brief.belongsToMany(db.Team, { through: 'briefTeam', onDelete: 'NO ACTION' });
 	db.Team.belongsToMany(db.Brief, { through: 'briefTeam', onDelete: 'NO ACTION' });
 
-	db.Brief.belongsToMany(db.BrandKPI, { through: 'briefBrandKPI', onDelete: 'NO ACTION' });
-	db.BrandKPI.belongsToMany(db.Brief, { through: 'briefBrandKPI', onDelete: 'NO ACTION' });
+	db.Brief.belongsToMany(db.SchoolSubject, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
+	db.SchoolSubject.belongsToMany(db.Brief, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
 	/**
 	 * CREATIVE
 	 */

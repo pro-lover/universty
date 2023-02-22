@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BrandKPIAddEditPage } from './add.edit.page';
+import { SchoolSubjectAddEditPage } from './add.edit.page';
 
 
-describe('BrandKPI Add/Edit Page', () => {
-	let component: BrandKPIAddEditPage;
-	let fixture: ComponentFixture<BrandKPIAddEditPage>;
+describe('SchoolSubject Add/Edit Page', () => {
+	let component: SchoolSubjectAddEditPage;
+	let fixture: ComponentFixture<SchoolSubjectAddEditPage>;
 
 	beforeEach(async () => {
 		await TestBed.configureTestingModule({
-			declarations: [BrandKPIAddEditPage],
+			declarations: [SchoolSubjectAddEditPage],
 			teardown: { destroyAfterEach: false }
 		}).compileComponents();
 	});
 
 	beforeEach(() => {
-		fixture = TestBed.createComponent(BrandKPIAddEditPage);
+		fixture = TestBed.createComponent(SchoolSubjectAddEditPage);
 		component = fixture.componentInstance;
 		fixture.detectChanges();
 	});

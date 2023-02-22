@@ -70,7 +70,7 @@ app.set('trust proxy', 1);
 app.use('/accounts', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/accounts.controller')));
 // api core routes
 app.use('/clients', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/clients.controller')));
-app.use('/brandKPIs', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/brand-KPIs.controller')));
+app.use('/schoolSubjects', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/school-subjects.controller')));
 app.use('/brands', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/brands.controller')));
 app.use('/briefPhases', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/brief-phases.controller')));
 app.use('/briefs', csrfProtection, csrfHandler, require(path.join(__dirname, 'api/' + API_VERSION + '/controllers/briefs.controller')));

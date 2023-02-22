@@ -2,7 +2,7 @@ export * from './account';
 export * from './alert';
 //export * from './state/websocket.service';
 export * from './client';
-export * from './brandKPI';
+export * from './schoolSubject';
 export * from './brand';
 export * from './briefPhase';
 export * from './brief';

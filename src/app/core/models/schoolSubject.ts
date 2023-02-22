@@ -1,5 +1,5 @@
 
-export class BrandKPI {
+export class SchoolSubject {
 	id!: string;
 	name!: string;
 	description!: string;

@@ -7,7 +7,7 @@ import { ROUTER_UTILS } from '@core/utils/router.utils';
 import {
     AdminListPage
 } from './';
-import { AccountsAddEditPage, AccountsListPage, BrandAddEditPage, BrandKPIAddEditPage, BrandKPIListPage, BrandListPage, BriefAddEditPage, BriefListPage, BriefPhaseAddEditPage, BriefPhaseListPage, CalendarAddEditPage, CalendarListPage, ClientAddEditPage, ClientListPage, CreativeAddEditPage, CreativeExecutionAddEditPage, CreativeExecutionListPage, CreativeListPage, JobLevelAddEditPage, JobLevelListPage, JobTitleAddEditPage, JobTitleListPage, TeamAddEditPage, TeamListPage } from './pages';
+import { AccountsAddEditPage, AccountsListPage, BrandAddEditPage, SchoolSubjectAddEditPage, SchoolSubjectListPage, BrandListPage, BriefAddEditPage, BriefListPage, BriefPhaseAddEditPage, BriefPhaseListPage, CalendarAddEditPage, CalendarListPage, ClientAddEditPage, ClientListPage, CreativeAddEditPage, CreativeExecutionAddEditPage, CreativeExecutionListPage, CreativeListPage, JobLevelAddEditPage, JobLevelListPage, JobTitleAddEditPage, JobTitleListPage, TeamAddEditPage, TeamListPage } from './pages';
 
 
 const AllRoles = [Role.Student, Role.Client, Role.Designer, Role.ProjectManager, Role.AccountService, Role.Admin];
@@ -171,40 +171,40 @@ const routes: Routes = [
 		loadChildren: async () => (await import('@pages/admin/pages/briefs/admin.briefs.module')).AdminBriefsModule
 	},
 		///////////////////////
-	// BRANDKPI
+	// SUBJECT
 	///////////////////////
 	{
-		path: ROUTER_UTILS.config.admin.brandKPIs.root,
-		component: BrandKPIListPage,
+		path: ROUTER_UTILS.config.admin.SchoolSubjects.root,
+		component: SchoolSubjectListPage,
 		canActivate: [RoleGuard],
 		data: {
-			breadcrumb: 'BrandKPIs',
+			breadcrumb: 'SchoolSubjects',
 			roles: [Role.Admin],
 			animation: 'ListPage',
 		},
-		loadChildren: async () => (await import('@pages/admin/pages/brandKPIs/admin.brandKPIs.module')).AdminBrandKPIsModule
+		loadChildren: async () => (await import('@pages/admin/pages/schoolsubject/admin.schoolsubjects.module')).AdminSchoolSubjectsModule
 	},
 	{
-		path: ROUTER_UTILS.config.admin.brandKPIs.create,
-		component: BrandKPIAddEditPage,
+		path: ROUTER_UTILS.config.admin.SchoolSubjects.create,
+		component: SchoolSubjectAddEditPage,
 		canActivate: [RoleGuard],
 		data: {
-			breadcrumb: 'Add BrandKPI',
+			breadcrumb: 'Add SchoolSubject',
 			roles: [Role.Admin],
 			animation: 'AddEditPage',
 		},
-		loadChildren: async () => (await import('@pages/admin/pages/brandKPIs/admin.brandKPIs.module')).AdminBrandKPIsModule
+		loadChildren: async () => (await import('@pages/admin/pages/schoolsubject/admin.schoolsubjects.module')).AdminSchoolSubjectsModule
 	},
 	{
-		path: ROUTER_UTILS.config.admin.brandKPIs.edit,
-		component: BrandKPIAddEditPage,
+		path: ROUTER_UTILS.config.admin.SchoolSubjects.edit,
+		component: SchoolSubjectAddEditPage,
 		canActivate: [RoleGuard],
 		data: {
-			breadcrumb: 'Edit BrandKPI',
+			breadcrumb: 'Edit SchoolSubject',
 			roles: AllRoles,
 			animation: 'AddEditPage',
 		},
-		loadChildren: async () => (await import('@pages/admin/pages/brandKPIs/admin.brandKPIs.module')).AdminBrandKPIsModule
+		loadChildren: async () => (await import('@pages/admin/pages/schoolsubject/admin.schoolsubjects.module')).AdminSchoolSubjectsModule
 	},
 	///////////////////////
 	// BRAND

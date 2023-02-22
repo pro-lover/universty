@@ -24,18 +24,18 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterModule } from '@angular/router';
 import { AccountStateModule } from '@core/state/account/accounts-state.module';
-import { BrandKPIStateModule } from '@core/state/brandKPI/brandKPI-state.module';
+import { SchoolSubjectStateModule } from '@core/state/SchoolSubject/SchoolSubject-state.module';
 import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import { BrandKPIAddEditPage, BrandKPIListPage } from './';
+import { SchoolSubjectAddEditPage, SchoolSubjectListPage } from '.';
 
 
 @NgModule({
 	declarations: [
-		BrandKPIListPage,
-		BrandKPIAddEditPage
+		SchoolSubjectListPage,
+		SchoolSubjectAddEditPage
 	],
 	imports: [
-		BrandKPIStateModule,
+		SchoolSubjectStateModule,
 		AccountStateModule,
 		NgxSkeletonLoaderModule,
 		RouterModule,
@@ -69,4 +69,4 @@ import { BrandKPIAddEditPage, BrandKPIListPage } from './';
 		MatNativeDateModule
 	]
 })
-export class AdminBrandKPIsModule {}
+export class AdminSchoolSubjectsModule {}

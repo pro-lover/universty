@@ -110,6 +110,7 @@ function registerSchema(req, res, next) {
     const schema = Joi.object({
         title: Joi.string().required(),
         firstName: Joi.string().required(),
+        phoneNo: Joi.string().required(),
         lastName: Joi.string().required(),
         IDNo: Joi.string().required(),
         address: Joi.string().required(),
@@ -239,6 +240,7 @@ function createSchema(req, res, next) {
     const schema = Joi.object({
         title: Joi.string().required(),
         firstName: Joi.string().required(),
+        phoneNo: Joi.string().required(),
         lastName: Joi.string().required(),
         IDNo: Joi.string().required(),
         address: Joi.string().required(),
@@ -260,6 +262,7 @@ function updateSchema(req, res, next) {
     const schemaRules = {
         title: Joi.string().required(),
         firstName: Joi.string().required(),
+        phoneNo: Joi.string().required(),
         lastName: Joi.string().required(),
         IDNo: Joi.string().required(),
         address: Joi.string().required(),

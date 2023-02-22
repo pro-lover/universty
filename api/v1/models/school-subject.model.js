@@ -8,6 +8,7 @@ function model(sequelize) {
 		description: { type: DataTypes.STRING, allowNull: false },
 		status: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: true },
 		lastEditedBy: { type: DataTypes.INTEGER, allowNull: true }
+		
 	};
 
 	const options = {
@@ -25,5 +26,5 @@ function model(sequelize) {
 		version: true
 	};
 
-	return sequelize.define('brandKPI', attributes, options);
+	return sequelize.define('schoolsubject', attributes, options);
 }

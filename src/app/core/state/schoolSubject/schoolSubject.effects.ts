@@ -1,19 +1,19 @@
 import { Location } from "@angular/common";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { AlertService, BrandKPIService } from "@core/services";
+import { AlertService, SchoolSubjectService } from "@core/services";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { of } from "rxjs";
 import { catchError, map, switchMap } from "rxjs/operators";
-import * as ModelActions from "./brandKPI.actions";
+import * as ModelActions from "./schoolSubject.actions";
 
 @Injectable()
-export class BrandKPIEffects {
+export class SchoolSubjectEffects {
 	constructor(
 		private router: Router,
 		private location: Location,
 		private actions$: Actions<any>,
-		private apiService: BrandKPIService,
+		private apiService: SchoolSubjectService,
 		private alertService: AlertService
 	) {}
 
@@ -27,8 +27,8 @@ export class BrandKPIEffects {
 	loadAll$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.appComponentInitialized,
-				ModelActions.BrandKPIActionTypes.COLLECTION_LOAD_BRANDKPIS
+				ModelActions.SchoolSubjectActionTypes.appComponentInitialized,
+				ModelActions.SchoolSubjectActionTypes.COLLECTION_LOAD_SCHOOLSUBJECTS
 			),
 			//tap((action) => console.log(action)),
 			switchMap(() =>
@@ -49,7 +49,7 @@ export class BrandKPIEffects {
 	addData$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.MODEL_CreateInitiated
+				ModelActions.SchoolSubjectActionTypes.MODEL_CreateInitiated
 			),
 			switchMap((action) =>
 				this.apiService.create(action.payload.dataItem).pipe(
@@ -70,7 +70,7 @@ export class BrandKPIEffects {
 	editData$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.MODEL_UpdateInitiated
+				ModelActions.SchoolSubjectActionTypes.MODEL_UpdateInitiated
 			),
 			switchMap((action) =>
 				this.apiService.update(action.payload.dataItem.id, action.payload.dataItem).pipe(
@@ -90,7 +90,7 @@ export class BrandKPIEffects {
 	editStatus$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.MODEL_UpdateStatusInitiated
+				ModelActions.SchoolSubjectActionTypes.MODEL_UpdateStatusInitiated
 			),
 			switchMap((action) =>
 				this.apiService.updateStatus(action.payload.dataId, action.payload.params).pipe(
@@ -111,7 +111,7 @@ export class BrandKPIEffects {
 	restoreData$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.MODEL_RestoreInitiated
+				ModelActions.SchoolSubjectActionTypes.MODEL_RestoreInitiated
 			),
 			switchMap((action) =>
 				this.apiService.restore(action.payload.dataId).pipe(
@@ -131,7 +131,7 @@ export class BrandKPIEffects {
 	deleteData$ = createEffect(() =>
 		this.actions$.pipe(
 			ofType(
-				ModelActions.BrandKPIActionTypes.MODEL_DeleteInitiated
+				ModelActions.SchoolSubjectActionTypes.MODEL_DeleteInitiated
 			),
 			switchMap((action) =>
 				this.apiService.delete(action.payload.dataId).pipe(
@@ -153,12 +153,12 @@ export class BrandKPIEffects {
 		() => {
 			return this.actions$.pipe(
 				ofType(
-					ModelActions.BrandKPIActionTypes.MODEL_RestoreFailed,
-					ModelActions.BrandKPIActionTypes.MODEL_UpdateSuccess,
-					ModelActions.BrandKPIActionTypes.MODEL_UpdateStatusFailed,
-					ModelActions.BrandKPIActionTypes.MODEL_CreateFailed,
-					//ModelActions.BrandKPIActionTypes.COLLECTION_LOADED_FAILED,
-					ModelActions.BrandKPIActionTypes.MODEL_DeleteFailed
+					ModelActions.SchoolSubjectActionTypes.MODEL_RestoreFailed,
+					ModelActions.SchoolSubjectActionTypes.MODEL_UpdateSuccess,
+					ModelActions.SchoolSubjectActionTypes.MODEL_UpdateStatusFailed,
+					ModelActions.SchoolSubjectActionTypes.MODEL_CreateFailed,
+					//ModelActions.SchoolSubjectActionTypes.COLLECTION_LOADED_FAILED,
+					ModelActions.SchoolSubjectActionTypes.MODEL_DeleteFailed
 				),
 				tap(
 					({ error }) => this.alertService.error(error)
@@ -172,12 +172,12 @@ export class BrandKPIEffects {
 		() => {
 			return this.actions$.pipe(
 				ofType(
-					ModelActions.BrandKPIActionTypes.MODEL_RestoreSuccess,
-					ModelActions.BrandKPIActionTypes.MODEL_UpdateSuccess,
-					ModelActions.BrandKPIActionTypes.MODEL_UpdateStatusSuccess,
-					ModelActions.BrandKPIActionTypes.MODEL_CreateSuccess,
-					ModelActions.BrandKPIActionTypes.COLLECTION_LOADED_SUCCESS,
-					ModelActions.BrandKPIActionTypes.MODEL_DeleteSuccess
+					ModelActions.SchoolSubjectActionTypes.MODEL_RestoreSuccess,
+					ModelActions.SchoolSubjectActionTypes.MODEL_UpdateSuccess,
+					ModelActions.SchoolSubjectActionTypes.MODEL_UpdateStatusSuccess,
+					ModelActions.SchoolSubjectActionTypes.MODEL_CreateSuccess,
+					ModelActions.SchoolSubjectActionTypes.COLLECTION_LOADED_SUCCESS,
+					ModelActions.SchoolSubjectActionTypes.MODEL_DeleteSuccess
 				),
 				tap(
 					({}) => this.alertService.success('Success')

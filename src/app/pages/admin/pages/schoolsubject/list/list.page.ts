@@ -7,10 +7,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { DialogConfirmComponent, DialogRestoreComponent } from '@app/components';
-import { Account, BrandKPI } from '@app/core/models';
+import { Account, SchoolSubject } from '@app/core/models';
 import { AccountService, AlertService } from '@app/core/services';
-import * as BrandKPIActions from "@core/state/brandKPI/brandKPI.actions";
-import * as BrandKPISelectors from "@core/state/brandKPI/brandKPI.selector";
+import * as SchoolSubjectActions from "@core/state/schoolSubject/schoolSubject.actions";
+import * as SchoolSubjectSelectors from "@core/state/schoolSubject/schoolSubject.selector";
 
 import { Actions, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
@@ -25,7 +25,7 @@ import * as XLSX from 'xlsx';
 		DatePipe
 	]
 })
-export class BrandKPIListPage implements OnInit, OnDestroy {
+export class SchoolSubjectListPage implements OnInit, OnDestroy {
 
 	// will use the _destroy$ observable to control
 	// fetching items from an observable
@@ -36,7 +36,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 	public primaryData!: any[];
 	public sortedData!: any[];
 
-	public dataView$!: Observable<BrandKPI[]>;
+	public dataView$!: Observable<SchoolSubject[]>;
 
 	public account!: Account;
 
@@ -92,7 +92,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 			.pipe(takeUntil(this._destroy$))
 			.subscribe((x:any) => this.account = x);
 
-		this.dataView$ = this.store.select(BrandKPISelectors.selectCollection).pipe(takeUntil(this._destroy$));
+		this.dataView$ = this.store.select(SchoolSubjectSelectors.selectCollection).pipe(takeUntil(this._destroy$));
 	}
 
 	ngOnInit() {
@@ -102,7 +102,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 		this.dataView$
 			.pipe(takeUntil(this._destroy$))
 			.subscribe(
-				(data:BrandKPI[]) =>  {
+				(data:SchoolSubject[]) =>  {
 
 					console.warn('this.dataView$', data);
 
@@ -123,7 +123,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 
 	private storeInit():void {
 
-		this.store.dispatch(new BrandKPIActions.COLLECTION_LOAD_BRANDKPIS());
+		this.store.dispatch(new SchoolSubjectActions.COLLECTION_LOAD_SCHOOLSUBJECTS());
 
 	}
 
@@ -132,9 +132,9 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 		this.actions$
 		.pipe(
 			ofType(
-				BrandKPIActions.BrandKPIActionTypes.MODEL_UpdateStatusSuccess,
-				BrandKPIActions.BrandKPIActionTypes.MODEL_DeleteSuccess,
-				BrandKPIActions.BrandKPIActionTypes.MODEL_RestoreSuccess
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_UpdateStatusSuccess,
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_DeleteSuccess,
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_RestoreSuccess
 			)
 		)
 		.pipe(takeUntil(this._destroy$))
@@ -150,9 +150,9 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 		this.actions$
 		.pipe(
 			ofType(
-				BrandKPIActions.BrandKPIActionTypes.MODEL_UpdateStatusFailed,
-				BrandKPIActions.BrandKPIActionTypes.MODEL_DeleteFailed,
-				BrandKPIActions.BrandKPIActionTypes.MODEL_RestoreFailed
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_UpdateStatusFailed,
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_DeleteFailed,
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_RestoreFailed
 
 			)
 		)
@@ -167,7 +167,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 		});
 	}
 
-	private initialise( data:BrandKPI[]):void {
+	private initialise( data:SchoolSubject[]):void {
 
 		this.primaryData = data;
 		this.sortedData = this.primaryData.slice();
@@ -189,7 +189,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 	private updateStatus( id: string, params: any ):void {
 
 		this.store.dispatch(
-			new BrandKPIActions.MODEL_UpdateStatusInitiated({
+			new SchoolSubjectActions.MODEL_UpdateStatusInitiated({
 				dataId: id,
 				params: params
 			})
@@ -214,7 +214,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 
 			if (result === true) {
 
-				this.store.dispatch(new BrandKPIActions.MODEL_DeleteInitiated({ dataId: id }) );
+				this.store.dispatch(new SchoolSubjectActions.MODEL_DeleteInitiated({ dataId: id }) );
 
 			} else {
 				//console.info('Cancel Removing ID:', id);
@@ -238,7 +238,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 
 			if (result === true) {
 
-				this.store.dispatch(new BrandKPIActions.MODEL_RestoreInitiated({ dataId: id }) );
+				this.store.dispatch(new SchoolSubjectActions.MODEL_RestoreInitiated({ dataId: id }) );
 
 			} else {}
 		});
@@ -282,7 +282,7 @@ export class BrandKPIListPage implements OnInit, OnDestroy {
 		XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
 
 		/* save to file */
-		XLSX.writeFile(wb, 'TBWA_Africa_Conference_All_BrandKPIs.xlsx');
+		XLSX.writeFile(wb, 'TBWA_Africa_Conference_All_SchoolSubjects.xlsx');
 
 	}
 

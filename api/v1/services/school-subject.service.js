@@ -14,9 +14,9 @@ module.exports = {
 
 async function getAll() {
 
-	//console.log('Getting all brandKPIs');
+	//console.log('Getting all schoolsubjects');
 
-    const models = await db.BrandKPI.findAll({
+    const models = await db.SchoolSubject.findAll({
 		paranoid: false,
 		order: [
 			['name', 'ASC']
@@ -27,7 +27,7 @@ async function getAll() {
 		prime.history = [];
 	});
 
-	//console.log('Getting all brandKPIs', models);
+	//console.log('Getting all schoolsubjects', models);
 
 
     return models.map(x => basicDetails(x));
@@ -50,14 +50,14 @@ async function getById(id) {
 
 async function create(params, editId) {
 	// validate
-	if (await db.BrandKPI.findOne({ where: {
+	if (await db.SchoolSubject.findOne({ where: {
 		[Op.or]: [{name: params.name}, {description: params.description}]
 		} }))
 	{
-		throw 'BrandKPI already exists. Please provide a unique Name and BrandKPI description.';
+		throw 'SchoolSubject already exists. Please provide a unique Name and SchoolSubject description.';
 	}
 
-    const model = new db.BrandKPI(params);
+    const model = new db.SchoolSubject(params);
 	model.lastEditedBy = editId;
     // save model
     await model.save();
@@ -70,11 +70,11 @@ async function update(id, params, editId) {
 
 	// validate (if name/shortname was changed)
 	if (params.name && model.name == params.name && model.description == params.description ) {
-		throw 'BrandKPI hasn\'t been updated.';
+		throw 'SchoolSubject hasn\'t been updated.';
 	}
 	// validate (if name/shortname is unique in db)
-	if ( params.name && (model.name !== params.name) && await db.BrandKPI.findOne({ where: { name: params.name } })) {
-		throw 'BrandKPI already exists.';
+	if ( params.name && (model.name !== params.name) && await db.SchoolSubject.findOne({ where: { name: params.name } })) {
+		throw 'SchoolSubject already exists.';
 	}
 
     // copy params to model and save
@@ -116,18 +116,18 @@ async function restore(id, editId) {
 
 async function getModelById(id) {
 	//const transaction = await db.sequelizeInstance.transaction({isolationLevel: Sequelize.Transaction.ISOLATION_LEVELS.READ_COMMITTED});
-    const model = await db.BrandKPI.findByPk(id, {
+    const model = await db.SchoolSubject.findByPk(id, {
 		paranoid: false,
 		//lock: true,
 		//transaction,
 		/** /
 		lock: {
 			level: transaction.LOCK,
-			of: db.BrandKPI
+			of: db.SchoolSubject
 		},
 		/**/
 	});
-    if (!model) throw 'BrandKPI not found';
+    if (!model) throw 'SchoolSubject not found';
     return model;
 }
 
@@ -136,7 +136,7 @@ async function getHistory() {
 	return [];
 
 	const modelHistories = await db.sequelizeInstance.query(
-		"SELECT * FROM `brandKPIHistories`",
+		"SELECT * FROM `schoolsubjectHistories`",
 		{
 			type: db.sequelizeInstance.QueryTypes.SELECT
 		}
@@ -150,7 +150,7 @@ async function getHistoryById(id) {
 	return {};
 
 	const modelHistories = await db.sequelizeInstance.query(
-		"SELECT * FROM `brandKPIHistories` WHERE id = ?",
+		"SELECT * FROM `schoolsubjectHistories` WHERE id = ?",
 		{
 			replacements: [id],
 			type: db.sequelizeInstance.QueryTypes.SELECT

@@ -15,7 +15,7 @@ import { FormControl } from '@angular/forms';
 
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { BriefProgress,CreativeExecution,BrandKPI,Team } from '@app/core/models';
+import { BriefProgress,CreativeExecution,Team } from '@app/core/models';
 import {ThemePalette} from '@angular/material/core';
 
 export interface DialogData {

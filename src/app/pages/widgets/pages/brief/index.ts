@@ -101,8 +101,8 @@
 						<dt>business</dt>
 						<dd>- {{element.business}}</dd>
 						<dt>Brand KPIs</dt>
-						<ng-container  *ngFor="let brandKPIdata of element.brandKPIs">
-							<dd>- {{brandKPIdata.name}}</dd>
+						<ng-container  *ngFor="let SchoolSubjectdata of element.SchoolSubjects">
+							<dd>- {{SchoolSubjectdata.name}}</dd>
 						  </ng-container>
 						<dt>Target Audience</dt>
 						<dd>- {{element.targetAudience}}</dd>
@@ -234,8 +234,8 @@
 						  <dt>business</dt>
 						  <dd>- {{element.business}}</dd>
 						  <dt>Brand KPIs</dt>
-						  <ng-container  *ngFor="let brandKPIdata of element.brandKPIs">
-							<dd>- {{brandKPIdata.name}}</dd>
+						  <ng-container  *ngFor="let SchoolSubjectdata of element.SchoolSubjects">
+							<dd>- {{SchoolSubjectdata.name}}</dd>
 						  </ng-container>
 						  <dt>Target Audience</dt>
 						  <dd>- {{element.targetAudience}}</dd>
@@ -367,8 +367,8 @@
 						  <dt>business</dt>
 						  <dd>- {{element.business}}</dd>
 						  <dt>Brand KPIs</dt>
-						  <ng-container  *ngFor="let brandKPIdata of element.brandKPIs">
-							<dd>- {{brandKPIdata.name}}</dd>
+						  <ng-container  *ngFor="let SchoolSubjectdata of element.SchoolSubjects">
+							<dd>- {{SchoolSubjectdata.name}}</dd>
 						  </ng-container>
 						  <dt>Target Audience</dt>
 						  <dd>- {{element.targetAudience}}</dd>
@@ -497,9 +497,9 @@
 						  <dd>- {{element.objective}}</dd>
 						  <dt>business</dt>
 						  <dd>- {{element.business}}</dd>
-						  <dt>Brand KPIs</dt>
-						  <ng-container  *ngFor="let brandKPIdata of element.brandKPIs">
-							<dd>- {{brandKPIdata.name}}</dd>
+						  <dt>School Subjects</dt>
+						  <ng-container  *ngFor="let SchoolSubjectdata of element.SchoolSubjects">
+							<dd>- {{SchoolSubjectdata.name}}</dd>
 						  </ng-container>
 
 						  <dt>Target Audience</dt>

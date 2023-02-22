@@ -1,12 +1,12 @@
 import {
 	Component, OnDestroy, OnInit
 } from '@angular/core';
-import { Router } from '@angular/router';
 import {
-	Account,Brand,Client,BrandKPI,Brief,BriefPhase,Creative,CreativeExecution,JobLevel,JobTitle,Team,
+	Account,Brand,Client,SchoolSubject,Brief,BriefPhase,Creative,CreativeExecution,JobLevel,JobTitle,Team,
 	Role
 } from '@app/core/models';
-import { AccountService, ClientService,BrandService ,BrandKPIService,BriefPhaseService,BriefService,CreativeExecutionService,CreativeService,JobLevelService,JobTitleService,TeamService,
+import { Router } from '@angular/router';
+import { AccountService, ClientService,BrandService ,SchoolSubjectService,BriefPhaseService,BriefService,CreativeExecutionService,CreativeService,JobLevelService,JobTitleService,TeamService,
 } from '@core/services';
 import { ThemeList, ThemeService } from '@core/services/theme';
 import { ROUTER_UTILS } from '@core/utils/router.utils';
@@ -34,7 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	myjobtitle!: JobTitle;
 	myteam!: Team;
 	myclient!: Client;
-	mybrandKPI!: BrandKPI;
+	myschoolsubject!: SchoolSubject;
 	mybrand!: Brand;
 	mybrief!: Brief;
 	mybriefphase!: BriefPhase;
@@ -47,11 +47,11 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	panelOpenState = false;
 
 	private allData!: any[];
-	private allClientData!: any[];private allBriefData!: any[];private allBriefPhaseData!: any[];private allBrandKPIData!: any[];
+	private allClientData!: any[];private allBriefData!: any[];private allBriefPhaseData!: any[];private allSchoolSubjectData!: any[];
 	private allJobTitleData!: any[];private allJobLevelData!: any[];private allCreativeData!: any[];private allCreativeEData!: any[];
 	private allTeamData!: any[];private allBrandData!: any[];
 
-	public clientData!: any[];public briefData!: any[];public briefPhaseData!: any[];public brandKPIData!: any[];
+	public clientData!: any[];public briefData!: any[];public briefPhaseData!: any[];public schoolsubjectData!: any[];
 	public jobTitleData!: any[];public jobLevelData!: any[];public creativeData!: any[];public creativeEData!: any[];
 	public teamData!: any[];public brandData!: any[];
 
@@ -70,7 +70,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		private themeService: ThemeService,
 		private accountService: AccountService,
 		private clientService: ClientService,
-		private brandKPIService: BrandKPIService,
+		private schoolSubjectService: SchoolSubjectService,
 		private brandService: BrandService,
 		private briefPhaseService: BriefPhaseService,
 		private briefService: BriefService,
@@ -102,9 +102,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		.pipe(takeUntil(this._destroy$))
 		.subscribe((x:any) => this.myclient = x);
 
-		this.brandKPIService.brandKPI
+		this.schoolSubjectService.schoolSubject
 		.pipe(takeUntil(this._destroy$))
-		.subscribe((x:any) => this.mybrandKPI = x);
+		.subscribe((x:any) => this.myschoolsubject = x);
 
 		this.brandService.brand
 		.pipe(takeUntil(this._destroy$))
@@ -144,7 +144,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 		this.isLoggedIn$ = this.authService.isLoggedIn$;
 		this.accountService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((accounts:Account[]) => {this.allData = accounts; if( accounts !== undefined && accounts.length > 0 ) {this.initialise(accounts);}});
 		this.briefService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((briefs:Brief[]) => {this.allBriefData = briefs;if( briefs !== undefined && briefs.length > 0 ) {this.initialiseBrief(briefs);}});
-		this.brandKPIService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((brandKPIs:BrandKPI[]) => {this.allBrandKPIData = brandKPIs; if( brandKPIs !== undefined && brandKPIs.length > 0 ) {this.initialiseBrandKPI(brandKPIs);}});
+		this.schoolSubjectService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((schoolsubjects:SchoolSubject[]) => {this.allSchoolSubjectData = schoolsubjects; if( schoolsubjects !== undefined && schoolsubjects.length > 0 ) {this.initialiseSchoolSubject(schoolsubjects);}});
 		this.brandService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((brands:Brand[]) => {this.allBrandData = brands; if( brands !== undefined && brands.length > 0 ) {this.initialiseBrand(brands);}});
 		this.briefPhaseService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((briefPhases:BriefPhase[]) => {this.allBriefPhaseData = briefPhases; if( briefPhases !== undefined && briefPhases.length > 0 ) {this.initialiseBriefPhase(briefPhases);}});
 		this.creativeExecutionService.getAll().pipe(first()).pipe(takeUntil(this._destroy$)).subscribe((creativeExecutions:CreativeExecution[]) => {this.allCreativeEData = creativeExecutions; if( creativeExecutions !== undefined && creativeExecutions.length > 0 ) {this.initialisecreativeExecutio(creativeExecutions);}});
@@ -162,7 +162,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	private initialiseclient(clients:Client[]):void {this.clientData = clients;}
 	private initialiseBrief(briefs:Brief[]):void {this.briefData = briefs;this.value = this.briefData.length+this.briefData.length;}
 	private initialiseBriefPhase(briefPhases:BriefPhase[]):void {this.briefPhaseData = briefPhases;}
-	private initialiseBrandKPI(brandKPIs:BrandKPI[]):void {this.brandKPIData = brandKPIs;}
+	private initialiseSchoolSubject(schoolsubjects:SchoolSubject[]):void {this.schoolsubjectData = schoolsubjects;}
 	private initialiseBrand(brands:Brand[]):void {this.brandData = brands;}
 	private initialiseCreative(creatives:Creative[]):void {this.creativeData = creatives;}
 	private initialisecreativeExecutio(creativeExecutions:CreativeExecution[]):void {this.creativeEData = creativeExecutions;}
@@ -170,6 +170,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
 	private initialiseJobTitle(jobTitles:JobTitle[]):void {this.jobTitleData = jobTitles;}
 	private initialiseTeam(teams:Team[]):void {this.teamData = teams;}
 
+	//_______________________________________________[ If user is a client]
 	public logout() {
 		this.accountService.logout();
 

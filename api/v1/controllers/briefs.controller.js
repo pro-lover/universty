@@ -54,7 +54,7 @@ function createSchema(req, res, next) {
 		deadlineDate: Joi.date().required(),
 		briefphaseId: Joi.number().required(),
 		creativeexecutionId: Joi.number().required(),
-		brandKPIId: Joi.array().items(Joi.number()).required(),
+		subjectId: Joi.array().items(Joi.number()).required(),
 		teamId: Joi.number().required(),
 
 	});
@@ -83,7 +83,7 @@ function updateSchema(req, res, next) {
 		deadlineDate: Joi.date().required(),
 		briefphaseId: Joi.number().required(),
 		creativeexecutionId: number().required(),
-		brandKPIId: Joi.array().items(Joi.number()).required(),
+		subjectId: Joi.array().items(Joi.number()).required(),
 		teamId: Joi.number().required(),
 	};
 	if (req.user.role === Role.Admin) {

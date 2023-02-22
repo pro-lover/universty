@@ -2,10 +2,10 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Account, BrandKPI, Role } from '@app/core/models';
+import { Account, SchoolSubject, Role } from '@app/core/models';
 import { AccountService, AlertService } from '@app/core/services';
-import * as BrandKPIActions from "@core/state/brandKPI/brandKPI.actions";
-import * as BrandKPISelectors from "@core/state/brandKPI/brandKPI.selector";
+import * as SchoolSubjectActions from "@core/state/schoolSubject/schoolSubject.actions";
+import * as SchoolSubjectSelectors from "@core/state/schoolSubject/schoolSubject.selector";
 
 import * as Bapp_Utils from '@core/utils';
 import { Actions, ofType } from "@ngrx/effects";
@@ -17,7 +17,7 @@ import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 	templateUrl: './add.edit.page.html',
 	styleUrls: ['./add.edit.page.scss'],
 })
-export class BrandKPIAddEditPage implements OnInit, OnDestroy {
+export class SchoolSubjectAddEditPage implements OnInit, OnDestroy {
 
 	// will use the _destroy$ observable to control
 	// fetching items from an observable
@@ -75,7 +75,7 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 				//this.isAddModeSubject.next(!this.id);
 				/**/
 				this.dataItem$ = this.store.select(
-					BrandKPISelectors.selectById(
+					SchoolSubjectSelectors.selectById(
 						parseInt(x)
 					)
 				);
@@ -86,14 +86,14 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 	}
 
 	ngOnDestroy(): void {
-		console.warn('Add/Edit BrandKPI Page ngOnDestroy');
+		console.warn('Add/Edit SchoolSubject Page ngOnDestroy');
 		this._destroy$.next(false);
 		this._destroy$.complete();
 	}
 
 	private storeInit():void {
 
-		this.store.dispatch(new BrandKPIActions.COLLECTION_LOAD_BRANDKPIS());
+		this.store.dispatch(new SchoolSubjectActions.COLLECTION_LOAD_SCHOOLSUBJECTS());
 
 	}
 
@@ -139,7 +139,7 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 		this.actions$
 		.pipe(
 			ofType(
-				BrandKPIActions.BrandKPIActionTypes.MODEL_CreateSuccess
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_CreateSuccess
 			)
 		)
 		.pipe(takeUntil(this._destroy$))
@@ -159,7 +159,7 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 		this.actions$
 		.pipe(
 			ofType(
-				BrandKPIActions.BrandKPIActionTypes.MODEL_UpdateSuccess
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_UpdateSuccess
 			)
 		)
 		.pipe(takeUntil(this._destroy$))
@@ -179,8 +179,8 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 		this.actions$
 		.pipe(
 			ofType(
-				BrandKPIActions.BrandKPIActionTypes.MODEL_CreateFailed,
-				BrandKPIActions.BrandKPIActionTypes.MODEL_UpdateFailed
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_CreateFailed,
+				SchoolSubjectActions.SchoolSubjectActionTypes.MODEL_UpdateFailed
 			)
 		)
 		.pipe(takeUntil(this._destroy$))
@@ -250,15 +250,15 @@ export class BrandKPIAddEditPage implements OnInit, OnDestroy {
 
 	private createRecord() {
 		this.store.dispatch(
-			new BrandKPIActions.MODEL_CreateInitiated({ dataItem: {
+			new SchoolSubjectActions.MODEL_CreateInitiated({ dataItem: {
 				...this.form.value
 			}})
 		);
 	}
 
-	private updateRecord( data: BrandKPI ) {
+	private updateRecord( data: SchoolSubject ) {
 		this.store.dispatch(
-			new BrandKPIActions.MODEL_UpdateInitiated({ dataItem: {
+			new SchoolSubjectActions.MODEL_UpdateInitiated({ dataItem: {
 				...data
 				//id: this.id.toString(),
 			}})

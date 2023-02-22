@@ -10,7 +10,7 @@ function model(sequelize) {
 		firstName: { type: DataTypes.STRING, allowNull: false },
 		lastName: { type: DataTypes.STRING, allowNull: false },
 		studentNo: { type: DataTypes.STRING, allowNull: false },
-		phoneNo: { type: DataTypes.STRING, allowNull: false },
+		phoneNo: { type: DataTypes.STRING, allowNull: true },
 		dateOfBirth: { type: DataTypes.STRING, allowNull: false },
 		gender:{ type: DataTypes.STRING, allowNull: false },
 		citizenship: { type: DataTypes.STRING, allowNull: false },

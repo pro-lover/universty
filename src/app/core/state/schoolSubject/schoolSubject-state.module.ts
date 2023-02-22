@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-import { BrandKPIEffects } from "@core/state/brandKPI";
+import { SchoolSubjectEffects } from "@core/state/schoolSubject";
 import { environment } from '@env/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
-import * as fromModel from './brandKPI.reducer';
+import * as fromModel from './schoolSubject.reducer';
 
 @NgModule({
 	imports: [
 		CommonModule,
-		StoreModule.forFeature('brandKPIs', fromModel.brandKPIReducer),
-		EffectsModule.forFeature([BrandKPIEffects])
+		StoreModule.forFeature('subjects', fromModel.SchoolSubjectReducer),
+		EffectsModule.forFeature([SchoolSubjectEffects])
 	],
 	declarations: []
 })
-export class BrandKPIStateModule {}
+export class SchoolSubjectStateModule {}

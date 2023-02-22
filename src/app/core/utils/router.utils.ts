@@ -30,10 +30,10 @@ export const ROUTER_UTILS = {
 				edit: 'clients/edit/:id',
 			},
 
-			brandKPIs: {
-				root: 'brandKPIs',
-				create: 'brandKPIs/create',
-				edit: 'brandKPIs/edit/:id',
+			SchoolSubjects: {
+				root: 'SchoolSubjects',
+				create: 'SchoolSubjects/create',
+				edit: 'SchoolSubjects/edit/:id',
 			},
 			brands: {
 				root: 'brands',

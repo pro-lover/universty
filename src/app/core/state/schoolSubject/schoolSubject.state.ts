@@ -1,13 +1,13 @@
-import { BrandKPI } from '@app/core/models';
+import { SchoolSubject } from '@app/core/models';
 import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 
-export const featureAdapter: EntityAdapter<BrandKPI> = createEntityAdapter<BrandKPI>({
-	selectId: (model:BrandKPI) => model.id,
-	sortComparer: (a: BrandKPI, b: BrandKPI): number =>
+export const featureAdapter: EntityAdapter<SchoolSubject> = createEntityAdapter<SchoolSubject>({
+	selectId: (model:SchoolSubject) => model.id,
+	sortComparer: (a: SchoolSubject, b: SchoolSubject): number =>
 		a.name.toString().localeCompare(b.name.toString())
 });
 
-export interface State extends EntityState<BrandKPI> {
+export interface State extends EntityState<SchoolSubject> {
 	//collection: model[];
 	//selectedItem: model | null;
 	collectionLoaded?: boolean;

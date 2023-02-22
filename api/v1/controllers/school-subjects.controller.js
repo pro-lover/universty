@@ -6,7 +6,7 @@ const path = require('path');
 const validateRequest = require(path.join(__dirname, '../middleware/validate-request'));
 const authorize = require(path.join(__dirname, '../middleware/authorize'));
 const Role = require(path.join(__dirname, '../shared/role'));
-const brandKPIService = require(path.join(__dirname, '../services/brand-KPI.service'));
+const schoolSubjectService = require(path.join(__dirname, '../services/school-subject.service'));
 
 // routes
 router.get('/', getAll);
@@ -20,7 +20,7 @@ router.delete('/:id', authorize([Role.Admin, Role.ProjectManager]), _delete);
 module.exports = router;
 
 function getAll(req, res, next) {
-	brandKPIService.getAll()
+	schoolSubjectService.getAll()
 		.then(models => res.json(models))
 		.catch(next);
 }
@@ -28,7 +28,7 @@ function getAll(req, res, next) {
 function getById(req, res, next) {
 
 	if ( Number(req.params.id) ) {
-        brandKPIService.getById(req.params.id)
+        schoolSubjectService.getById(req.params.id)
 			.then(model => model ? res.json(model) : res.sendStatus(404))
 			.catch(next);
     } else {
@@ -45,7 +45,7 @@ function createSchema(req, res, next) {
 }
 
 function create(req, res, next) {
-	brandKPIService.create(req.body, req.user.id)
+	schoolSubjectService.create(req.body, req.user.id)
 		.then(model => res.json(model))
 		.catch(next);
 }
@@ -61,7 +61,7 @@ function updateSchema(req, res, next) {
 function update(req, res, next) {
 
 	if ( Number(req.params.id) ) {
-		brandKPIService.update(req.params.id, req.body, req.user.id)
+		schoolSubjectService.update(req.params.id, req.body, req.user.id)
 			.then(model => res.json(model))
 			.catch(next);
     } else {
@@ -79,7 +79,7 @@ function updateStatusSchema(req, res, next) {
 function updateStatus(req, res, next) {
 
 	if ( Number(req.params.id) ) {
-		brandKPIService.updateStatus(req.params.id, req.body, req.user.id)
+		schoolSubjectService.updateStatus(req.params.id, req.body, req.user.id)
 			.then(model => res.json(model))
 			.catch(next);
 	} else {
@@ -90,7 +90,7 @@ function updateStatus(req, res, next) {
 function _delete(req, res, next) {
 
     if ( Number(req.params.id) ) {
-        brandKPIService.delete(req.params.id, req.user.id)
+        schoolSubjectService.delete(req.params.id, req.user.id)
 			.then(model => res.json(model))
 			.catch(next);
     } else {
@@ -101,7 +101,7 @@ function _delete(req, res, next) {
 function restore(req, res, next) {
 
 	if ( Number(req.params.id) ) {
-		brandKPIService.restore(req.params.id, req.user.id)
+		schoolSubjectService.restore(req.params.id, req.user.id)
 			.then(model => res.json(model))
 			.catch(next);
 	} else {

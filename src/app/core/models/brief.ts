@@ -18,7 +18,7 @@ export class Brief {
 	briefphaseId!: number;
 	clientId!: number;
 	teams!:any[];
-	brandKPIs!:any[];
+	subjects!:any[];
 	role!: string;
 	creativeexecution!: any[];
 	client!: any[];

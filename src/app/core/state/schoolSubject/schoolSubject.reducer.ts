@@ -1,16 +1,16 @@
-import { BrandKPIActions, BrandKPIActionTypes } from './brandKPI.actions';
-import { featureAdapter, State } from "./brandKPI.state";
+import { SchoolSubjectActions, SchoolSubjectActionTypes } from './schoolSubject.actions';
+import { featureAdapter, State } from "./schoolSubject.state";
 
 const initialState = featureAdapter.getInitialState();
 
-export function brandKPIReducer(
+export function SchoolSubjectReducer(
 	state = initialState,
-	action: BrandKPIActions
+	action: SchoolSubjectActions
 ): State {
 
 	switch(action.type) {
 
-		case BrandKPIActionTypes.COLLECTION_LOADED_SUCCESS:
+		case SchoolSubjectActionTypes.COLLECTION_LOADED_SUCCESS:
 
 			return featureAdapter.setAll(
 				action.payload.collection,
@@ -23,11 +23,11 @@ export function brandKPIReducer(
 				}
 			);
 
-		case BrandKPIActionTypes.COLLECTION_CLEAR_ALL:
+		case SchoolSubjectActionTypes.COLLECTION_CLEAR_ALL:
 
 			return featureAdapter.removeAll(state);
 
-		case BrandKPIActionTypes.MODEL_LoadedSuccess:
+		case SchoolSubjectActionTypes.MODEL_LoadedSuccess:
 
 			//console.warn('action.type:', action.type);
 
@@ -43,7 +43,7 @@ export function brandKPIReducer(
 				  }
 			);
 
-		case BrandKPIActionTypes.MODEL_CreateSuccess:
+		case SchoolSubjectActionTypes.MODEL_CreateSuccess:
 
 			return featureAdapter.addOne(
 				action.payload.dataItem,  {
@@ -54,7 +54,7 @@ export function brandKPIReducer(
 				  }
 			);
 
-		case BrandKPIActionTypes.MODEL_UpdateSuccess:
+		case SchoolSubjectActionTypes.MODEL_UpdateSuccess:
 
 			return featureAdapter.updateOne(
 				action.payload.dataItem,
@@ -66,7 +66,7 @@ export function brandKPIReducer(
 				}
 			);
 
-		case BrandKPIActionTypes.MODEL_DeleteSuccess:
+		case SchoolSubjectActionTypes.MODEL_DeleteSuccess:
 
 			return featureAdapter.removeOne(
 				action.payload.dataId,
@@ -78,13 +78,13 @@ export function brandKPIReducer(
 				}
 			);
 
-		case BrandKPIActionTypes.MODEL_LoadedFailed:
-		case BrandKPIActionTypes.MODEL_UpdateFailed:
-		case BrandKPIActionTypes.MODEL_UpdateStatusFailed:
-		case BrandKPIActionTypes.MODEL_DeleteFailed:
-		case BrandKPIActionTypes.MODEL_RestoreFailed:
-		case BrandKPIActionTypes.MODEL_CreateFailed:
-		case BrandKPIActionTypes.COLLECTION_LOADED_FAILED:
+		case SchoolSubjectActionTypes.MODEL_LoadedFailed:
+		case SchoolSubjectActionTypes.MODEL_UpdateFailed:
+		case SchoolSubjectActionTypes.MODEL_UpdateStatusFailed:
+		case SchoolSubjectActionTypes.MODEL_DeleteFailed:
+		case SchoolSubjectActionTypes.MODEL_RestoreFailed:
+		case SchoolSubjectActionTypes.MODEL_CreateFailed:
+		case SchoolSubjectActionTypes.COLLECTION_LOADED_FAILED:
 
 			console.error('FAILED REDUCER:', action.type, featureAdapter);
 

@@ -1,6 +1,6 @@
 ﻿export * from './accounts';
 export * from './brands';
-export * from './brandKPIs';
+export * from './schoolsubject';
 export * from './briefphases';
 export * from './briefs';
 export * from './clients';

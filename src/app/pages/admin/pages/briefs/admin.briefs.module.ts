@@ -27,7 +27,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
 import { AccountStateModule } from '@core/state/account/accounts-state.module';
 import { BriefStateModule } from '@core/state/brief/brief-state.module';
-import { BrandKPIStateModule } from '@core/state/brandKPI/brandKPI-state.module';
+import { SchoolSubjectStateModule } from '@core/state/SchoolSubject/SchoolSubject-state.module';
 import { BriefPhaseStateModule } from '@core/state/briefPhase/briefPhase-state.module';
 import { TeamStateModule } from '@core/state/team/team-state.module';
 import { CreativeExecutionStateModule } from '@core/state/creativeExecution/creativeExecution-state.module';
@@ -49,7 +49,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 	imports: [
 		DashboardWidgetsModule,
 		CreativeExecutionStateModule,
-		BrandKPIStateModule,
+		SchoolSubjectStateModule,
 		BriefPhaseStateModule,
 		TeamStateModule,
 		BrandStateModule,

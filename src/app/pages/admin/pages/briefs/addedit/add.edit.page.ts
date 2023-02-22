@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Account,BriefProgress, Brief, Role,CreativeExecution,BriefPhase,BrandKPI,Team } from '@app/core/models';
+import { Account,BriefProgress, Brief, Role,CreativeExecution,BriefPhase,SchoolSubject,Team } from '@app/core/models';
 import { AccountService, AlertService } from '@app/core/services';
 import * as BriefActions from "@core/state/brief/brief.actions";
 import * as BriefSelectors from "@core/state/brief/brief.selector";
@@ -12,8 +12,8 @@ import * as CreativeExecutionSelectors from "@core/state/creativeExecution/creat
 import * as BriefPhaseActions from "@core/state/briefPhase/briefPhase.actions";
 import * as BriefPhaseSelectors from "@core/state/briefPhase/briefPhase.selector";
 
-import * as BrandKPIActions from "@core/state/brandKPI/brandKPI.actions";
-import * as BrandKPISelectors from "@core/state/brandKPI/brandKPI.selector";
+import * as SchoolSubjectActions from "@core/state/schoolSubject/schoolSubject.actions";
+import * as SchoolSubjectSelectors from "@core/state/schoolSubject/schoolSubject.selector";
 
 import * as TeamActions from "@core/state/team/team.actions";
 import * as TeamSelectors from "@core/state/team/team.selector";
@@ -46,7 +46,7 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 
 	public dataCreativeExecutions$!: Observable<CreativeExecution[]>;
 	public dataBriefPhases$!: Observable<BriefPhase[]>;
-	public dataBrandKPIs$!: Observable<BrandKPI[]>;
+	public dataSchoolSubjects$!: Observable<SchoolSubject[]>;
 	public dataTeams$!: Observable<Team[]>;
 
 	Role = Role;
@@ -70,7 +70,7 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 		this.account = this.accountService.accountValue;
 		this.dataCreativeExecutions$ = this.store.select(CreativeExecutionSelectors.selectCollection).pipe(takeUntil(this._destroy$));
 		this.dataBriefPhases$ = this.store.select(BriefPhaseSelectors.selectCollection).pipe(takeUntil(this._destroy$));
-		this.dataBrandKPIs$ = this.store.select(BrandKPISelectors.selectCollection).pipe(takeUntil(this._destroy$));
+		this.dataSchoolSubjects$ = this.store.select(SchoolSubjectSelectors.selectCollection).pipe(takeUntil(this._destroy$));
 		this.dataTeams$ = this.store.select(TeamSelectors.selectCollection).pipe(takeUntil(this._destroy$));
 	}
 
@@ -122,12 +122,12 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 					if( data === null || data.length <= 0 ) return;
 				}
 			);
-			this.dataBrandKPIs$
+			this.dataSchoolSubjects$
 			.pipe(takeUntil(this._destroy$))
 			.subscribe(
-				(data:BrandKPI[]) =>  {
+				(data:SchoolSubject[]) =>  {
 
-					console.warn('dataBrandKPIs$: ', data);
+					console.warn('dataSchoolSubjects$: ', data);
 
 					if( data === null || data.length <= 0 ) return;
 				}
@@ -157,7 +157,7 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 		this.store.dispatch(new BriefActions.COLLECTION_LOAD_BRIEFS());
 		this.store.dispatch(new CreativeExecutionActions.COLLECTION_LOAD_CREATIVEEXECUTIONS());
 		this.store.dispatch(new BriefPhaseActions.COLLECTION_LOAD_BRIEFPHASES());
-		this.store.dispatch(new BrandKPIActions.COLLECTION_LOAD_BRANDKPIS());
+		this.store.dispatch(new SchoolSubjectActions.COLLECTION_LOAD_SCHOOLSUBJECTS());
 		this.store.dispatch(new TeamActions.COLLECTION_LOAD_TEAMS());
 
 	}
@@ -285,7 +285,7 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 			deadlineDate: [new Date(), Validators.required],
 			creativeexecutionId: [''],
 			briefphaseId: ['', Validators.required],
-			brandKPIId: ['', Validators.required],
+			SchoolSubjectId: ['', Validators.required],
 			teamId: ['', Validators.required],
 		});
 
@@ -346,7 +346,7 @@ export class BriefAddEditPage implements OnInit, OnDestroy {
 	public ListtrackByFn(index:number, item:any) {
 		return index; // or item.id
 	}
-	public brandKPIList($event:any,id:any) {
+	public SchoolSubjectList($event:any,id:any) {
 
 		console.log(" kpI : ", $event.checked +" : " + id);
 	}
