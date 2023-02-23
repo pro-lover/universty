@@ -1,0 +1,245 @@
+
+<mat-toolbar class="bapp-admin-toolbar">
+
+	<span class="toolbar-title">
+		<span *ngIf="isAddMode">Add New Brief</span>
+		<span *ngIf="!isAddMode">Edit Brief Option</span>
+	</span>
+	<span class="example-spacer"></span>
+
+	<div class="btn-group">
+		<button (click)="back()" class="btn btn-dark">Back</button>
+	</div>
+
+	<button mat-icon-button (click)="help()" class="Help" aria-label="Help">
+		<mat-icon>help</mat-icon>
+	</button>
+
+</mat-toolbar>
+
+<form class="form-model-edit" [formGroup]="form" (ngSubmit)="onSubmit()">
+	<h1>Best Brief:</h1>
+   <p>*Please note the information in grey is a guide for you to filling out the brief</p>
+   <p>This document exists to outline and frame the goal for a creative project. By answering the 11 questions, this document can help guide the creative team to best reach the campaigns goals. In close consultation with the Account Manager this brief is to be compiled by the client. All briefs must be read and signed by the project owner.</p>
+	<div class="form-row row">
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Offer</mat-label>
+				<input matInput placeholder="What are we selling or offering? Why should customers choose this product over similar competitor products? How is it different? Why is it better?"
+				formControlName="offer" [ngClass]="{ 'is-invalid': submitted && f['offer'].errors }" required />
+				<mat-error *ngIf="submitted && f['offer'].errors" class="invalid-feedback">
+					<div *ngIf="f['offer'].errors['required']">Offer is required</div>
+				</mat-error>
+				<mat-hint>What are we selling or offering? Why should customers choose this product over similar competitor products? How is it different? Why is it better?</mat-hint>
+			</mat-form-field>
+
+		</div>
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>objective</mat-label>
+				<input matInput placeholder="" formControlName="objective" [ngClass]="{ 'is-invalid': submitted && f['objective'].errors }" required />
+				<mat-error *ngIf="submitted && f['objective'].errors" class="invalid-feedback">
+					<div *ngIf="f['objective'].errors['required']">Brief objective is required</div>
+				</mat-error>
+				<mat-hint>In one simple sentence please explain what we want to achieve? What problem are we trying to solve? What is the goal of the creative work? (250 characters)</mat-hint>
+			</mat-form-field>
+		</div>
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Business</mat-label>
+				<input matInput placeholder="" formControlName="business" [ngClass]="{ 'is-invalid': submitted && f['business'].errors }" required />
+				<mat-error *ngIf="submitted && f['business'].errors" class="invalid-feedback">
+					<div *ngIf="f['business'].errors['required']">Brief business is required</div>
+				</mat-error>
+				<mat-hint>How will the creative work contribute to the business and brand KPI’s for the year? Please indicate which KPI’s it will impact and how are we currently tracking against those KPI’s.</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field appearance="fill">
+				<mat-label>Brand KPIs</mat-label>
+				<mat-select formControlName="SchoolSubjectId" multiple>
+					<ng-container *ngFor="let SchoolSubject of dataSchoolSubjects$| async">
+				  <mat-option [value]="SchoolSubject.id">{{SchoolSubject.name }}</mat-option>
+				</ng-container>
+				</mat-select>
+			  </mat-form-field>
+
+				<mat-hint>How will the creative work contribute to the business and brand KPI’s for the year? Please indicate which KPI’s it will impact and how are we currently tracking against those KPI’s.
+				</mat-hint>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Target Audience</mat-label>
+				<input matInput placeholder=""
+				formControlName="targetAudience" [ngClass]="{ 'is-invalid': submitted && f['targetAudience'].errors }" required />
+				<mat-error *ngIf="submitted && f['targetAudience'].errors" class="invalid-feedback">
+					<div *ngIf="f['targetAudience'].errors['required']">targetAudience is required</div>
+				</mat-error>
+				<mat-hint>Who are we talking to? Who is our Primary target market?</mat-hint>
+			</mat-form-field>
+		</div>
+
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Target Audience Insight</mat-label>
+				<input matInput placeholder="" formControlName="targetAudienceInsight" [ngClass]="{ 'is-invalid': submitted && f['targetAudienceInsight'].errors }" required />
+				<mat-error *ngIf="submitted && f['targetAudienceInsight'].errors" class="invalid-feedback">
+					<div *ngIf="f['targetAudienceInsight'].errors['required']">Brief targetAudienceInsight is required</div>
+				</mat-error>
+				<mat-hint>Highlight a behaviour or phenomena about our audience that can help point to fresh solutions or ideas.</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Target Audience Outtake</mat-label>
+				<input matInput placeholder="" formControlName="targetAudienceOuttake" [ngClass]="{ 'is-invalid': submitted && f['targetAudienceOuttake'].errors }" required />
+				<mat-error *ngIf="submitted && f['targetAudienceOuttake'].errors" class="invalid-feedback">
+					<div *ngIf="f['targetAudienceOuttake'].errors['required']">Brief targetAudienceOuttake is required</div>
+				</mat-error>
+				<mat-hint>What do you want people to think, feel and do?</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>single Minded Thought</mat-label>
+				<input matInput placeholder="" formControlName="singleMindedThought" [ngClass]="{ 'is-invalid': submitted && f['singleMindedThought'].errors }" required />
+				<mat-error *ngIf="submitted && f['singleMindedThought'].errors" class="invalid-feedback">
+					<div *ngIf="f['singleMindedThought'].errors['required']">Brief singleMindedThought is required</div>
+				</mat-error>
+				<mat-hint>What is the single most important thing to communicate? (250 characters)</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Brand Tone</mat-label>
+				<input matInput placeholder=""
+				formControlName="brandTone" [ngClass]="{ 'is-invalid': submitted && f['brandTone'].errors }" required />
+				<mat-error *ngIf="submitted && f['brandTone'].errors" class="invalid-feedback">
+					<div *ngIf="f['brandTone'].errors['required']">brandTone is required</div>
+				</mat-error>
+				<mat-hint>How should the work sound?  This in most cases will remain the same. Brand tones hardly change. Here, you can copy and paste. Be mindful that in some cases the tone might need to suit what is happening in the world (COVID, Natural disaster, Nationwide Looting)</mat-hint>
+			</mat-form-field>
+		</div>
+
+		<div class="form-group col-12 col-md-7">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>What is the budget?</mat-label>
+				<input class="input-right-align" type="number" matInput placeholder="0" formControlName="budget" [ngClass]="{ 'is-invalid': submitted && f['budget'].errors }" required />
+				<span matPrefix>R&nbsp;</span>
+				<span matSuffix>.00</span>
+				<mat-error *ngIf="submitted && f['budget'].errors" class="invalid-feedback">
+					<div *ngIf="f['budget'].errors['required']">Brief budget is required</div>
+				</mat-error>
+				<mat-hint>This is critical. It gives the team a sense of scale. Can we go big, or do we need to box clever?</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-12">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Executional Requirement</mat-label>
+				<mat-select formControlName="creativeexecutionId" [ngClass]="{ 'is-invalid':  f['creativeexecutionId'].errors }" required>
+					<ng-container *ngFor="let CreativeExecution of dataCreativeExecutions$| async">
+						<mat-option [value]="CreativeExecution.id" *ngIf="CreativeExecution.status === true">
+							<span>{{ CreativeExecution.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['creativeexecutionId'].errors" class="invalid-feedback">
+					<div *ngIf="f['creativeexecutionId'].errors['required']">Brief creativeExecution is required</div>
+				</mat-error>
+				<mat-hint>1. The elements required to get approval
+					2. The elements required before material deadline
+
+					These are the collateral items. The actual ads needed. TV, Radio, banners etc. Sizes and timings will also help.</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-6">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Brief Phase</mat-label>
+				<mat-select formControlName="briefphaseId" [ngClass]="{ 'is-invalid':  f['briefphaseId'].errors }" required>
+					<ng-container *ngFor="let BriefPhase of dataBriefPhases$| async">
+						<mat-option [value]="BriefPhase.id" *ngIf="BriefPhase.status === true">
+							<span>{{ BriefPhase.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['briefphaseId'].errors" class="invalid-feedback">
+					<div *ngIf="f['briefphaseId'].errors['required']">Brief briefPhase is required</div>
+				</mat-error>
+				<mat-hint>This is dictated by the timing agreement in the SLA. Depending on the tier of the brief we should have a clear indication of the timings.</mat-hint>
+			</mat-form-field>
+		</div>
+		<div class="form-group col-12 col-md-6">
+
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Team</mat-label>
+				<mat-select formControlName="teamId" [ngClass]="{ 'is-invalid':  f['teamId'].errors }" required>
+					<ng-container *ngFor="let Teams of dataTeams$| async">
+						<mat-option [value]="Teams.id" *ngIf="Teams.status === true">
+							<span>{{ Teams.name }}</span>
+						</mat-option>
+					</ng-container>
+				</mat-select>
+				<mat-error *ngIf="submitted && f['teamId'].errors" class="invalid-feedback">
+					<div *ngIf="f['teamId'].errors['required']">Brief briefPhase is required</div>
+				</mat-error>
+				<mat-hint>This is dictated by the timing agreement in the SLA. Depending on the tier of the brief we should have a clear indication of the timings.</mat-hint>
+			</mat-form-field>
+		</div>
+
+		<div class="form-group col-12 col-md-6">
+			<mat-form-field class="" appearance="fill">
+				<mat-label>Deadline Time</mat-label>
+				<input type="time" matInput placeholder="" formControlName="deadlineTime" [ngClass]="{ 'is-invalid': submitted && f['deadlineTime'].errors }" required />
+				<mat-error *ngIf="submitted && f['deadlineTime'].errors" class="invalid-feedback">
+					<div *ngIf="f['deadlineTime'].errors['required']">Brief deadlineTime is required</div>
+				</mat-error>
+				<mat-hint>Deadline Time</mat-hint>
+			</mat-form-field>
+
+		</div>
+
+		<div class="form-group col-12 col-md-6">
+			  <mat-form-field class="" appearance="fill">
+				<mat-label>Deadline Date</mat-label>
+				<input matInput [matDatepicker]="picker" formControlName="deadlineDate" [ngClass]="{ 'is-invalid': submitted && f['deadlineDate'].errors }" required>
+				<mat-hint>MM/DD/YYYY</mat-hint>
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker touchUi #picker></mat-datepicker>
+
+				<mat-error *ngIf="submitted && f['deadlineDate'].errors" class="invalid-feedback">
+					<div *ngIf="f['deadlineDate'].errors['required']">Brief deadlineDate is required</div>
+				</mat-error>
+			  </mat-form-field>
+		</div>
+
+    </div>
+	<hr />
+	<br />
+    <div class="form-group">
+		<div class="btn-group">
+			<button [disabled]="loading" class="btn btn-success">
+				<span *ngIf="loading" class="mr-1 spinner-border spinner-border-sm"></span>
+				Save
+			</button>
+			<a [ngClass]="{ 'disabled': loading }" class="btn btn-secondary" (click)="back()">
+				Cancel
+			</a>
+		</div>
+	</div>
+	<br />
+</form>

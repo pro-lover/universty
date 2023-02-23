@@ -30,10 +30,10 @@ export const ROUTER_UTILS = {
 				edit: 'clients/edit/:id',
 			},
 
-			SchoolSubjects: {
-				root: 'SchoolSubjects',
-				create: 'SchoolSubjects/create',
-				edit: 'SchoolSubjects/edit/:id',
+			schoolsubjects: {
+				root: 'schoolsubjects',
+				create: 'schoolsubjects/create',
+				edit: 'schoolsubjects/edit/:id',
 			},
 			brands: {
 				root: 'brands',
@@ -54,6 +54,11 @@ export const ROUTER_UTILS = {
 				root: 'briefs',
 				create: 'briefs/create',
 				edit: 'briefs/edit/:id',
+			},
+			schoolcertificates: {
+				root: 'schoolcertificates',
+				create: 'schoolcertificates/create',
+				edit: 'schoolcertificates/edit/:id',
 			},
 			briefphases: {
 				root: 'briefphases',

@@ -1,0 +1,134 @@
+<mat-toolbar class="bapp-admin-toolbar">
+
+	<span class="toolbar-title">
+		Total SchoolCertificates:
+		<span *ngIf="!primaryData" class="mr-1 spinner-border spinner-border-sm">
+
+		</span>
+		<span *ngIf="primaryData">
+			{{primaryData.length}}
+		</span>
+	</span>
+
+	<span class="example-spacer"></span>
+	<div class="btn-group">
+		<button routerLink="create" class="btn btn-success" id="hint-action-btn-create">
+			Add SchoolCertificate
+		</button>
+
+		<button [disabled]="!primaryData" (click)="export()" class="btn btn-secondary" id="hint-action-btn-export">
+			Export
+		</button>
+
+		<button [disabled]="!primaryData" (click)="back()" class="btn btn-dark" id="hint-action-btn-back">
+			Back
+		</button>
+	</div>
+	<!--
+	<button [disabled]="!primaryData" mat-icon-button class="Help" aria-label="Help" (click)="help()">
+		<mat-icon>help</mat-icon>
+	</button>
+	-->
+</mat-toolbar>
+
+<mat-accordion class="accordion-headers-align graph-panel" >
+
+	<mat-expansion-panel>
+		<mat-expansion-panel-header>
+			<mat-panel-title>
+				FILTERS
+			</mat-panel-title>
+			<mat-panel-description>Filter Table</mat-panel-description>
+		</mat-expansion-panel-header>
+		<ng-template matExpansionPanelContent>
+			<div class="filters-container">
+				<div class="row">
+					<div class="col-12 col-md-6">
+						<mat-form-field class="name-filter-chip-list" appearance="fill" *ngIf="masterReference_names">
+							<mat-chip-list  #chipList aria-label="All Names">
+
+								<mat-chip *ngFor="let activeNameFilter of activeNameFilters" [selectable]="selectable"
+									[removable]="removable" (removed)="removeSelectedFiltered(activeNameFilter.name)">
+											{{activeNameFilter.name}}
+									<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+
+								</mat-chip>
+
+								<input matInput placeholder="Search by name..."
+									#chipInput
+									[formControl]="chipCtrl"
+									[matAutocomplete]="auto"
+									[matChipInputFor]="chipList"
+									[matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+									[matChipInputAddOnBlur]="addOnBlur"
+									>
+									<!-- (matChipInputTokenEnd)="add($event)" | async-->
+							</mat-chip-list>
+							<mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedTextFilter($event, 'name')">
+								<mat-option *ngFor="let so of filteredNames | async" [value]="so.name">
+									{{ so.name }}
+								</mat-option>
+							</mat-autocomplete>
+						</mat-form-field>
+					</div>
+					<div class="col-12 col-md-3 offset-md-3 filter-status-toggle">
+						Show only active?
+						<br />
+						<mat-slide-toggle
+							color="primary"
+							(change)="onFilterChange('status')"
+							[formControl]="statusFilterValue">
+						</mat-slide-toggle>
+					</div>
+				</div>
+
+			</div>
+		</ng-template>
+	</mat-expansion-panel>
+</mat-accordion>
+<br /><br />
+
+<mat-accordion class="example-headers-align" multi *ngIf="dataView$ | async; let allSchoolCertificates; else noContent">
+	<ng-container >
+		<ng-container *ngFor="let brandDataviews of brandDataview">
+			<ng-container *ngIf="(allSchoolCertificates | groupByBrand : 'client' : brandDataviews.id : brandDataview : myclient) != 'empt'">
+			<mat-expansion-panel>
+				<mat-expansion-panel-header>
+					<mat-panel-title> {{allSchoolCertificates | groupByBrand : 'client' : brandDataviews.id : brandDataview : myclient}} </mat-panel-title>
+					<mat-panel-description>
+						<ng-container *ngFor="let briefProgress of dataBriefProgress ;let indexOfelement = index; " >
+							<ng-container *ngIf="(allSchoolCertificates | sumByKey : 'role' : briefProgress.name : brandDataviews.id : myclient) != 0">
+								<ng-container *ngIf="dataBriefProgress.length === (indexOfelement+2)">
+									{{allSchoolCertificates | sumByKey : 'totSum' : briefProgress.name : brandDataviews.id : myclient}} of {{brandNoSlot((allSchoolCertificates | groupByBrand : 'client' : brandDataviews.id : brandDataview : myclient))}}
+								</ng-container>
+								
+							</ng-container>
+						</ng-container>
+					</mat-panel-description>
+				</mat-expansion-panel-header>
+				<mat-accordion >
+					<ng-container *ngFor="let briefProgress of dataBriefProgress" >
+						<ng-container *ngIf="(allSchoolCertificates | sumByKey : 'role' : briefProgress.name : brandDataviews.id : myclient) != 0">
+							<mat-expansion-panel>
+								<mat-expansion-panel-header>
+									<mat-panel-title>SchoolCertificate {{briefProgress.name}}</mat-panel-title>
+									<mat-panel-description>
+										<span >
+											{{allSchoolCertificates | sumByKey : 'role' : briefProgress.name : brandDataviews.id : myclient}}
+										</span>
+									</mat-panel-description>
+								</mat-expansion-panel-header>
+									<app-widgets [dataView]="allSchoolCertificates" [briefProgress]="briefProgress.name" [brandDataviews]="brandDataviews.id"></app-widgets>
+							</mat-expansion-panel>
+						</ng-container>
+					</ng-container>
+				  </mat-accordion>
+			</mat-expansion-panel>
+		</ng-container>
+	</ng-container>
+</ng-container>
+  </mat-accordion>
+
+  <ng-template #noContent>
+	Loading...
+  </ng-template>

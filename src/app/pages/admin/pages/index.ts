@@ -1,6 +1,7 @@
 ﻿export * from './accounts';
 export * from './brands';
 export * from './schoolsubject';
+export * from './schoolcertificates';
 export * from './briefphases';
 export * from './briefs';
 export * from './clients';

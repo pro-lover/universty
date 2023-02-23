@@ -3,6 +3,7 @@ export * from './account';
 export * from './alert';
 export * from './client';
 export * from './schoolSubject';
+export * from './schoolCertificate';
 export * from './brand';
 export * from './briefPhase';
 export * from './brief';

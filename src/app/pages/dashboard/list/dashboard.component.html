@@ -495,10 +495,10 @@
 
 					<div class="card-user-header">
 						<h3 class="card-user-title">
-							Brand KPIs
+							School Subject
 						</h3>
 						<h3 class="card-user-title">
-							Total SchoolSubjects: <span *ngIf="!clientData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="primaryData">{{clientData.length}}</span>
+							Total SchoolSubjects: <span *ngIf="!schoolsubjectData" class="mr-1 spinner-border spinner-border-sm"></span><span *ngIf="schoolsubjectData">{{schoolsubjectData.length}}</span>
 						</h3>
 						<mat-chip-list
 							class="example-chip">
@@ -517,7 +517,7 @@
 							<div class="card-user-body-content-item">
 								<button
 									mat-menu-item
-									[routerLink]="['/admin', 'SchoolSubjects']">
+									[routerLink]="['/admin', 'schoolsubjects']">
 										<span>Manage</span>
 								</button>
 							</div>
@@ -804,7 +804,7 @@
 								</p>
 							</mat-card-content>
 							<mat-card-actions>
-								<button mat-button appClickTracking routerLink="/admin/accounts/edit/{{account.id}}" routerLinkActive="active">
+								<button mat-button appClickTracking routerLink="/admin/schoolsubjects/edit/{{account.id}}" routerLinkActive="active">
 									<mat-icon>edit</mat-icon>
 								</button>
 

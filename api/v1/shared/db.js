@@ -47,11 +47,11 @@ async function initialize() {
 	db.Emergency = require('../models/emergency.model')(sequelize);
 
 /**
-	 * DATA MODEL - BRAND KPI
+	 * DATA MODEL - School Subject
 	 */
 	db.SchoolSubject = require('../models/school-subject.model')(sequelize);
 	/**
-	 * DATA MODEL - BRAND KPI
+	 * DATA MODEL - BRAND 
 	 */
 	db.Brand = require('../models/brand.model')(sequelize);
 	/**
@@ -62,6 +62,10 @@ async function initialize() {
 	 * DATA MODEL - BRIEF
 	 */
 	db.Brief = require('../models/brief.model')(sequelize);
+		/**
+	 * DATA MODEL - SCHOOOL CERTIFICATE
+	 */
+	db.SchoolCertificate = require('../models/brief.model')(sequelize);
 	/**
 	 * DATA MODEL - CLIENT
 	 */
@@ -107,6 +111,24 @@ async function initialize() {
 
 	db.Brief.belongsToMany(db.SchoolSubject, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
 	db.SchoolSubject.belongsToMany(db.Brief, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
+
+	/**
+	* BRIEF
+	*/
+   db.SchoolCertificate.belongsTo(db.BriefPhase, { onDelete: 'NO ACTION' });
+   db.BriefPhase.hasMany(db.SchoolCertificate);
+
+   db.SchoolCertificate.belongsTo(db.Client, { onDelete: 'NO ACTION' });
+   db.Client.hasMany(db.SchoolCertificate);
+
+   db.SchoolCertificate.belongsTo(db.CreativeExecution, { onDelete: 'NO ACTION' });
+   db.CreativeExecution.hasMany(db.SchoolCertificate);
+
+   db.SchoolCertificate.belongsToMany(db.Team, { through: 'briefTeam', onDelete: 'NO ACTION' });
+   db.Team.belongsToMany(db.SchoolCertificate, { through: 'briefTeam', onDelete: 'NO ACTION' });
+
+   db.SchoolCertificate.belongsToMany(db.SchoolSubject, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
+   db.SchoolSubject.belongsToMany(db.SchoolCertificate, { through: 'briefSchoolSubject', onDelete: 'NO ACTION' });
 	/**
 	 * CREATIVE
 	 */
@@ -133,13 +155,22 @@ async function initialize() {
 
 	// sync all models with database
 	await sequelize.sync();
-	db.Brief.sync({
+	db.SchoolCertificate.sync({
 		alter: {
 			drop: false
 		}
 	}).catch(function(err){
 		console.log(err);
 	});
+	// sync all models with database
+	//await sequelize.sync();
+	//db.Brief.sync({
+	//	alter: {
+	//		drop: false
+	//	}
+	//}).catch(function(err){
+	//	console.log(err);
+	//});
 	// Version History Table
 	/**/
 	//Temporal(db.Account, sequelize);

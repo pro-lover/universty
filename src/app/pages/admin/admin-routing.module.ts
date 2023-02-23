@@ -7,7 +7,7 @@ import { ROUTER_UTILS } from '@core/utils/router.utils';
 import {
     AdminListPage
 } from './';
-import { AccountsAddEditPage, AccountsListPage, BrandAddEditPage, SchoolSubjectAddEditPage, SchoolSubjectListPage, BrandListPage, BriefAddEditPage, BriefListPage, BriefPhaseAddEditPage, BriefPhaseListPage, CalendarAddEditPage, CalendarListPage, ClientAddEditPage, ClientListPage, CreativeAddEditPage, CreativeExecutionAddEditPage, CreativeExecutionListPage, CreativeListPage, JobLevelAddEditPage, JobLevelListPage, JobTitleAddEditPage, JobTitleListPage, TeamAddEditPage, TeamListPage } from './pages';
+import { AccountsAddEditPage, AccountsListPage, BrandAddEditPage, SchoolSubjectAddEditPage, SchoolSubjectListPage, BrandListPage, SchoolCertificateAddEditPage, SchoolCertificateListPage, BriefAddEditPage, BriefListPage, BriefPhaseAddEditPage, BriefPhaseListPage, CalendarAddEditPage, CalendarListPage, ClientAddEditPage, ClientListPage, CreativeAddEditPage, CreativeExecutionAddEditPage, CreativeExecutionListPage, CreativeListPage, JobLevelAddEditPage, JobLevelListPage, JobTitleAddEditPage, JobTitleListPage, TeamAddEditPage, TeamListPage } from './pages';
 
 
 const AllRoles = [Role.Student, Role.Client, Role.Designer, Role.ProjectManager, Role.AccountService, Role.Admin];
@@ -170,11 +170,47 @@ const routes: Routes = [
 		},
 		loadChildren: async () => (await import('@pages/admin/pages/briefs/admin.briefs.module')).AdminBriefsModule
 	},
+	///////////////////////
+	// SCHOOL CERTIFICATE
+	///////////////////////
+	{
+		path: ROUTER_UTILS.config.admin.schoolcertificates.root,
+		component: SchoolCertificateListPage,
+		canActivate: [RoleGuard],
+		data: {
+			breadcrumb: 'SchoolCertificates',
+			roles: [Role.Admin,Role.Client],
+			animation: 'ListPage',
+		},
+		loadChildren: async () => (await import('@pages/admin/pages/schoolcertificates/admin.schoolcertificates.module')).AdminSchoolCertificatesModule
+	},
+	{
+		path: ROUTER_UTILS.config.admin.schoolcertificates.create,
+		component: SchoolCertificateAddEditPage,
+		canActivate: [RoleGuard],
+		data: {
+			breadcrumb: 'Add SchoolCertificate',
+			roles: [Role.Admin],
+			animation: 'AddEditPage',
+		},
+		loadChildren: async () => (await import('@pages/admin/pages/schoolcertificates/admin.schoolcertificates.module')).AdminSchoolCertificatesModule
+	},
+	{
+		path: ROUTER_UTILS.config.admin.schoolcertificates.edit,
+		component: SchoolCertificateAddEditPage,
+		canActivate: [RoleGuard],
+		data: {
+			breadcrumb: 'Edit SchoolCertificate',
+			roles: AllRoles,
+			animation: 'AddEditPage',
+		},
+		loadChildren: async () => (await import('@pages/admin/pages/schoolcertificates/admin.schoolcertificates.module')).AdminSchoolCertificatesModule
+	},
 		///////////////////////
 	// SUBJECT
 	///////////////////////
 	{
-		path: ROUTER_UTILS.config.admin.SchoolSubjects.root,
+		path: ROUTER_UTILS.config.admin.schoolsubjects.root,
 		component: SchoolSubjectListPage,
 		canActivate: [RoleGuard],
 		data: {
@@ -185,7 +221,7 @@ const routes: Routes = [
 		loadChildren: async () => (await import('@pages/admin/pages/schoolsubject/admin.schoolsubjects.module')).AdminSchoolSubjectsModule
 	},
 	{
-		path: ROUTER_UTILS.config.admin.SchoolSubjects.create,
+		path: ROUTER_UTILS.config.admin.schoolsubjects.create,
 		component: SchoolSubjectAddEditPage,
 		canActivate: [RoleGuard],
 		data: {
@@ -196,7 +232,7 @@ const routes: Routes = [
 		loadChildren: async () => (await import('@pages/admin/pages/schoolsubject/admin.schoolsubjects.module')).AdminSchoolSubjectsModule
 	},
 	{
-		path: ROUTER_UTILS.config.admin.SchoolSubjects.edit,
+		path: ROUTER_UTILS.config.admin.schoolsubjects.edit,
 		component: SchoolSubjectAddEditPage,
 		canActivate: [RoleGuard],
 		data: {
